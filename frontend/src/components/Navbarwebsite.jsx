@@ -40,12 +40,12 @@ export default function Navbarwebsite() {
             <div className="d-flex ms-5 text-light gap-4">
               <div className="nav_item">
                 <a href="#" className="login">
-                  <MdOutlineFavoriteBorder /> Favoris
+                  <AiOutlineLogin /> Log In
                 </a>
               </div>
               <div className="nav_item">
                 <a href="#" className="login">
-                  <AiOutlineLogin /> Log In
+                  <MdOutlineFavoriteBorder /> Favoris
                 </a>
               </div>
               <div className="nav_item">

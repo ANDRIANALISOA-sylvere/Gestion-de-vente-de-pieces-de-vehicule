@@ -44,6 +44,6 @@ input {
   background-color: var(--bs-warning) !important;
 }
 .navbar_item:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
