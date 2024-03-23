@@ -13,7 +13,7 @@ export default function Card() {
         </span>
       </div>
       <div className="card-body" style={{ background:"#eff6ff" }}>
-        <span style={{ color:'red' }}>Categorie</span>
+        <span style={{ color:'#ec4899' }}>Categorie</span>
         <h5 className="card-text" style={{ fontWeight:'bold' }}>LENOVO L540</h5>
         <div className="card-text d-flex justify-content-between">
           <div>

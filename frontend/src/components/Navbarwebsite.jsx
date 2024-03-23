@@ -58,7 +58,7 @@ export default function Navbarwebsite() {
         </div>
       </nav>
       <nav
-        className="navbar navbar-expand-lg bg-primary"
+        className="navbar navbar-expand-lg"
         id="sous_nav"
         data-bs-theme="light"
       >
