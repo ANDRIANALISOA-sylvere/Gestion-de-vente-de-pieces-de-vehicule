@@ -1,6 +1,6 @@
+import { AiOutlineUser } from "react-icons/ai"; 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { AiOutlineLogin } from "react-icons/ai";
 import { BiSearchAlt } from "react-icons/bi";
 import React from "react";
 
@@ -31,7 +31,7 @@ export default function Navbarwebsite() {
                 placeholder="Chercher un produit ici ..."
               />
               <button
-                className="btn btn-warning my-2 my-sm-0 btn_search"
+                className="btn  my-2 my-sm-0 btn_search"
                 type="submit"
               >
                 <BiSearchAlt />
@@ -40,7 +40,7 @@ export default function Navbarwebsite() {
             <div className="d-flex ms-5 text-light gap-4">
               <div className="nav_item">
                 <a href="#" className="login">
-                  <AiOutlineLogin /> Log In
+                  <AiOutlineUser /> Log In
                 </a>
               </div>
               <div className="nav_item">

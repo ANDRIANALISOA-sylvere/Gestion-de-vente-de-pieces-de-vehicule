@@ -1,3 +1,6 @@
+/**
+  color : #ec4899 , #1e293b, #334155
+*/
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +11,7 @@ body {
 }
 .btn_search {
   border-radius: 0px 5px 5px 0px !important;
+  background-color: #ec4899;
 }
 .btn_search_input {
   border-radius: 5px 0px 0px 5px !important;
@@ -24,7 +28,7 @@ body {
 .navbar-brand {
   font-weight: bold !important;
   font-size: 25px !important;
-  color: var(--bs-warning) !important;
+  color: #ec4899 !important;
 }
 input {
   outline: none;
@@ -41,7 +45,8 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
 }
 .dropdown-item:hover {
-  background-color: var(--bs-warning) !important;
+  background-color: #ec4899 !important;
+  color:white !important;
 }
 .navbar_item:hover {
   opacity: 0.5;
