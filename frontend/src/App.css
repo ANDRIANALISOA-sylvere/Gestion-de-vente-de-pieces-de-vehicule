@@ -4,6 +4,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #f8fafc;
 }
 .navbar {
   background-color: #1e293b !important;
@@ -51,4 +52,26 @@ input {
 .navbar_item:hover {
   opacity: 0.5;
 }
-
+.card-img
+{
+  position: relative;
+  height: 200px;
+}
+.card-img img
+{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  object-fit: cover;
+}
+.card_favoris
+{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-size: 25px;
+}
+.card-text{
+  color: #64748b;
+}
