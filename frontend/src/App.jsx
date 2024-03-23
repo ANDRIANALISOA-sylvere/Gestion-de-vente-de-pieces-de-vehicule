@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <Navbarwebsite></Navbarwebsite>
-      <Card></Card>
     </>
   )
 }

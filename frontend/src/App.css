@@ -13,6 +13,12 @@ body {
   border-radius: 0px 5px 5px 0px !important;
   background-color: #ec4899;
 }
+.btn_search:hover
+{
+  border:1px solid #ec4899;
+  color: white;
+}
+
 .btn_search_input {
   border-radius: 5px 0px 0px 5px !important;
 }

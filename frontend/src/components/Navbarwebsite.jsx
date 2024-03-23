@@ -31,7 +31,7 @@ export default function Navbarwebsite() {
                 placeholder="Chercher un produit ici ..."
               />
               <button
-                className="btn  my-2 my-sm-0 btn_search"
+                className="btn my-2 my-sm-0 btn_search"
                 type="submit"
               >
                 <BiSearchAlt />
