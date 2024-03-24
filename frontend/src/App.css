@@ -78,4 +78,7 @@ input {
   color: #ec4899 ;
   border: none;
 }
-
+.rating
+{
+  color: rgb(238, 238, 32);
+}
