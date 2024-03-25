@@ -82,3 +82,12 @@ input {
 {
   color: black;
 }
+.footer
+{
+  background-color: #1e293b;
+  color: white !important;
+}
+.footer a
+{
+  color: white !important;
+}
