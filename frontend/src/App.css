@@ -66,8 +66,12 @@ input {
   position: absolute;
   top: 10px;
   right: 20px;
-  color: white;
+  padding :0px 5px;
+  color: #475569;
   font-size: 20px;
+  background-color: #f1f5f9;
+  border-radius: 50px;
+  cursor: pointer;
 }
 #brand {
   position: absolute;
