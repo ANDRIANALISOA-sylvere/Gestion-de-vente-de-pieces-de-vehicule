@@ -3,6 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import Navbarwebsite from "./components/Navbarwebsite";
 import "./App.css";
 import {Card} from "./components/Card";
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Card></Card>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
