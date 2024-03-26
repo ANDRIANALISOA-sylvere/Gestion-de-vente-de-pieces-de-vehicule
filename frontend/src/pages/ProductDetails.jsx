@@ -1,7 +1,7 @@
 import { FaRegComment } from "react-icons/fa";
 import { BsSend } from "react-icons/bs";
 import React from "react";
-import Sary from "../assets/Images/magicpattern-mesh-gradient-1711367366397.png";
+import Sary from "../assets/Images/magicpattern-mesh-gradient-1711489894773.jpeg";
 import { Card } from "../components/Card";
 import { IoIosStarOutline } from "react-icons/io";
 import { IoIosStarHalf } from "react-icons/io";
@@ -12,7 +12,10 @@ export default function ProductDetails() {
   return (
     <div className="container mt-5">
       <div className="row">
-        <div className="col-md-6 text-center border border-dark" style={{ height: "500px" }}>
+        <div
+          className="col-md-6 text-center border border-dark"
+          style={{ height: "500px" }}
+        >
           <img src={Sary} alt="" style={{ height: "90%", width: "100%" }} />
         </div>
         <div className="col-md-6">
