@@ -1,8 +1,5 @@
 import { IoIosStarOutline } from "react-icons/io"; 
 import { IoIosStarHalf } from "react-icons/io"; 
-import { ImStarHalf } from "react-icons/im"; 
-import { BsStarHalf } from "react-icons/bs"; 
-import { AiOutlineStar } from "react-icons/ai"; 
 import { AiFillStar } from "react-icons/ai"; 
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -19,7 +16,7 @@ export const Card = () => {
             alt=""
             style={{ width: "100%", height: "200px", objectFit: "cover" }}
           />
-          <div id="favoris">
+          <div className="favoris">
             <AiOutlineHeart />
           </div>
           <div

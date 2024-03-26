@@ -3,15 +3,16 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbarwebsite() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/">
             E-vendre
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -93,10 +94,10 @@ export default function Navbarwebsite() {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item navbar_item">
-                <a className="nav-link text-light active" href="#">
+                <NavLink className="nav-link text-light active" to='/'>
                   Acceuil
                   <span className="visually-hidden">(current)</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item navbar_item">
                 <a className="nav-link text-light" href="#">
