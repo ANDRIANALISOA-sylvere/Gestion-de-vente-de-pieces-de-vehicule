@@ -122,7 +122,7 @@ export default function ProductDetails() {
               type="range"
               name=""
               id=""
-              min="0"
+              min="1"
               max="5"
               step="1"
               className="form-range"
