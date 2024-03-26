@@ -170,7 +170,6 @@ export default function Produits() {
             <Card></Card>
             <Card></Card>
             <Card></Card>
-            <Card></Card>
           </div>
         </div>
       </div>
