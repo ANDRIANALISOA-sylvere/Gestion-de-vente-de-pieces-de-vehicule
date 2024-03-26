@@ -115,3 +115,16 @@ body {
 .border-light {
   --bs-border-opacity: 0.3;
 }
+.border-dark {
+  --bs-border-opacity: 0.02;
+}
+.body_card{
+  color: var(--bs-dark) !important;
+  text-decoration: none !important;
+
+}
+.body_card:hover 
+{
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
