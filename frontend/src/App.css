@@ -49,7 +49,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
 }
 .dropdown-item:hover {
-  background-color: #ec4899 !important;
+  background-color: var(--bs-primary) !important;
   color: white !important;
 }
 .navbar_item:hover {

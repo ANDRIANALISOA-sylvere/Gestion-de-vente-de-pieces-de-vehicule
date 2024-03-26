@@ -8,7 +8,7 @@ import Sary from "../assets/Images/sky.jpeg";
 
 export const Card = () => {
   return (
-    <div className="col">
+    <div className="col mt-2 mb-1">
       <div className="card border-0 shadow-sm product_card">
         <div className="img_header">
           <img
