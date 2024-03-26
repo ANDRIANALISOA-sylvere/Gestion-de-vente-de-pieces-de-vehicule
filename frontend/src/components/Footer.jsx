@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="d-flex flex-column flex-sm-row pt-2 justify-content-between border-top">
+        <div className="d-flex flex-column flex-sm-row pt-2 justify-content-between border-top border-light">
           <p>© 2024 . Team E-vendre</p>
           <ul className="list-unstyled d-flex">
             <li className="ms-3">

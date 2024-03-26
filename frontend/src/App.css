@@ -112,3 +112,6 @@ body {
 .footer a {
   color: white !important;
 }
+.border-light {
+  --bs-border-opacity: 0.3;
+}
