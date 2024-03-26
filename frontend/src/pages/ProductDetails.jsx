@@ -94,7 +94,7 @@ export default function ProductDetails() {
         <div className="p-2 bg-light rounded">
           <p>
             <strong>
-              <i>Joséphin Sylvère</i>
+              <span>Joséphin Sylvère</span>
             </strong>
             <small style={{ float: "right" }}>20-04-2024</small>
           </p>
@@ -111,7 +111,21 @@ export default function ProductDetails() {
           </p>
         </div>
         <div>
-          <strong>Ajouter un commentaire :</strong>
+          <div className="mt-5">
+            <strong>Ajouter un commentaire :</strong>
+            <br />
+            <label htmlFor="Note">Note :</label>
+            <input
+              type="range"
+              name=""
+              id=""
+              min="0"
+              max="5"
+              step="1"
+              className="form-range"
+            />
+          </div>
+          <label htmlFor="Note">Commentaire :</label>
           <textarea
             name=""
             id=""
