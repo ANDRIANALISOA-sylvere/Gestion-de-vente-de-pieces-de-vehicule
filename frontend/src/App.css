@@ -61,7 +61,7 @@ body {
   position: relative;
 }
 .img_header img {
-  border-radius: 4px 4px 0px 0px !important;
+  border-radius: 5px 5px 0px 0px !important;
 }
 .favoris {
   position: absolute;
@@ -92,7 +92,7 @@ body {
   border: none;
 }
 .rating {
-  color: black;
+  color: var(--bs-warning);
 }
 .footer {
   background-color: #1e293b;

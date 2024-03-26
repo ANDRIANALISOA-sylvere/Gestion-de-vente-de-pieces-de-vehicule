@@ -29,7 +29,7 @@ export const Card = () => {
         <div className="card-body">
           <span style={{ fontWeight: "bold" }}>Lenovo L540</span>
           <br />
-          <span className="card-text text-muted">
+          <span className="card-text" style={{ opacity:'0.7' }}>
             This is a wider card with supporting text below as a natural lead-in
             ...
           </span>
