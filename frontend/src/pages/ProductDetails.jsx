@@ -98,20 +98,20 @@ export default function ProductDetails() {
             </strong>
             <small style={{ float: "right" }}>20-04-2024</small>
           </p>
-          <p>
+          <div>
             Lorem ipsum, dolor sit amet Lorem ipsum dolor sit amet.
             <br />
-            <div className="rating">
+            <p className="rating">
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <IoIosStarHalf />
               <IoIosStarOutline />
-            </div>
-          </p>
+            </p>
+          </div>
         </div>
         <div>
-          <div className="mt-5">
+          <div className="mt-3">
             <strong>Ajouter un commentaire :</strong>
             <br />
             <label htmlFor="Note">Note :</label>
