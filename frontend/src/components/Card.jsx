@@ -41,9 +41,9 @@ export const Card = () => {
             <IoIosStarOutline />
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <span style={{ color: "#ec4899", fontWeight: "bold" }}>$100</span>
+            <span style={{ fontWeight: "bold",opacity:'0.5' }}>$100</span>
             <small className="text-body-secondary" style={{ fontSize: "20px" }}>
-              <AiOutlineShoppingCart />
+              <AiOutlineShoppingCart className="icon_panier" />
             </small>
           </div>
         </div>

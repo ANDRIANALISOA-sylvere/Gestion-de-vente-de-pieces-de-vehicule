@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 export default function Navbarwebsite() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-primary">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             E-vendre
@@ -32,7 +32,7 @@ export default function Navbarwebsite() {
                 placeholder="Chercher un produit ici ..."
               />
               <button
-                className="btn my-2 my-sm-0 btn_search"
+                className="btn btn-primary my-2 my-sm-0 btn_search"
                 type="submit"
               >
                 <BiSearchAlt />

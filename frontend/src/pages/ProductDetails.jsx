@@ -93,17 +93,21 @@ export default function ProductDetails() {
         <strong>Commentaires :</strong>
         <div className="p-2 bg-light rounded">
           <p>
-            <strong><i>Joséphin Sylvère</i></strong>
+            <strong>
+              <i>Joséphin Sylvère</i>
+            </strong>
             <small style={{ float: "right" }}>20-04-2024</small>
           </p>
           <p>
             Lorem ipsum, dolor sit amet Lorem ipsum dolor sit amet.
             <br />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <IoIosStarHalf />
-            <IoIosStarOutline />
+            <div className="rating">
+              <AiFillStar />
+              <AiFillStar />
+              <AiFillStar />
+              <IoIosStarHalf />
+              <IoIosStarOutline />
+            </div>
           </p>
         </div>
         <div>
@@ -115,7 +119,10 @@ export default function ProductDetails() {
             rows="3"
             className="form-control"
           ></textarea>
-          <button className="btn btn-warning btn-sm mt-2" style={{ float:'right' }}>
+          <button
+            className="btn btn-warning btn-sm mt-2"
+            style={{ float: "right" }}
+          >
             <FaRegComment /> Commenter
           </button>
         </div>

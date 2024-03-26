@@ -1,7 +1,7 @@
-import { AiFillLinkedin } from "react-icons/ai"; 
-import { AiFillInstagram } from "react-icons/ai"; 
-import { AiOutlineTwitter } from "react-icons/ai"; 
-import { FaFacebook } from "react-icons/fa"; 
+import { AiFillLinkedin } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 import React from "react";
 
 export default function Footer() {
@@ -10,7 +10,7 @@ export default function Footer() {
       <footer className="p-5 pb-5">
         <div className="row">
           <div className="col-6 col-md-2 mb-3">
-            <h5 style={{ color: "#ec4899" }}>E-vendre</h5>
+            <h5 style={{ color: "var(--bs-primary)" }}>E-vendre</h5>
           </div>
 
           <div className="col-6 col-md-2 mb-3">
@@ -59,12 +59,12 @@ export default function Footer() {
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                 <AiOutlineTwitter /> Twitter
+                  <AiOutlineTwitter /> Twitter
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                 <AiFillLinkedin /> LinkdIn
+                  <AiFillLinkedin /> LinkdIn
                 </a>
               </li>
             </ul>

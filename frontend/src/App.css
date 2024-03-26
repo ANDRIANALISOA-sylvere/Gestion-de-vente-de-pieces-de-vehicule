@@ -11,10 +11,9 @@ body {
 }
 .btn_search {
   border-radius: 0px 5px 5px 0px !important;
-  background-color: #ec4899;
 }
 .btn_search:hover {
-  border: 1px solid #ec4899;
+  border: 1px solid var(--bs-primary);
   color: white;
 }
 
@@ -36,7 +35,7 @@ body {
 .navbar-brand {
   font-weight: bold !important;
   font-size: 25px !important;
-  color: #ec4899 !important;
+  color: var(--bs-primary) !important;
 }
 #sous_nav {
   background-color: #334155 !important;
@@ -82,13 +81,23 @@ body {
   border-radius: 50px;
   cursor: pointer;
 }
+.icon_panier {
+  height: 35px;
+  width: 35px;
+  align-items: center;
+  color: #475569;
+  padding: 5px;
+  background-color: #f1f5f9;
+  border-radius: 50%;
+  cursor: pointer;
+}
 #brand {
   position: absolute;
   bottom: 10px;
   right: 20px;
   font-weight: bold;
   background-color: #1e293b !important;
-  color: #ec4899;
+  color: var(--bs-primary);
   border: none;
 }
 .rating {
