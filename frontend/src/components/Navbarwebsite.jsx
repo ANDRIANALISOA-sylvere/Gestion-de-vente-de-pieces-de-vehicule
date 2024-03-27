@@ -100,9 +100,9 @@ export default function Navbarwebsite() {
                 </NavLink>
               </li>
               <li className="nav-item navbar_item">
-                <a className="nav-link text-light" href="#">
+                <NavLink className="nav-link text-light" to="/produits">
                   Produits
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item navbar_item">
                 <a className="nav-link text-light" href="#">
