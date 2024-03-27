@@ -57,6 +57,12 @@ body {
 }
 .product_card {
   border-radius: 0px !important;
+  transition: transform 0.3s ease;
+  border-radius: 5px 5px !important;
+}
+.product_card:hover
+{
+  transform: translateY(-8px); 
 }
 .img_header {
   position: relative;
