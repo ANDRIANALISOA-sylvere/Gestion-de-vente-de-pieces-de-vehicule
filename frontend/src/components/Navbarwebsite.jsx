@@ -10,7 +10,7 @@ export default function Navbarwebsite() {
     <div>
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/" style={{ fontFamily : 'montserrat,sans-serif' }}>
             E-vendre
           </NavLink>
           <button

@@ -58,7 +58,6 @@ body {
 .product_card {
   border-radius: 0px !important;
   transition: transform 0.3s ease;
-  border-radius: 5px 5px !important;
 }
 .product_card:hover
 {
@@ -68,7 +67,8 @@ body {
   position: relative;
 }
 .img_header img {
-  border-radius: 5px 5px 0px 0px !important;
+  border-radius: 3px 3px 0px 0px !important;
+  padding: 0px !important;
 }
 .favoris {
   position: absolute;
