@@ -38,11 +38,11 @@ export default function Navbarwebsite() {
                 <BiSearchAlt />
               </button>
             </form>
-            <div className="d-flex ms-5 text-light gap-4">
+            <div className="d-flex ms-5 text-light gap-3">
               <div className="nav_item">
-                <a href="#" className="login">
-                  <AiOutlineUser /> Log In
-                </a>
+                <NavLink to="/login" className="login">
+                  <AiOutlineUser /> Se connecter
+                </NavLink>
               </div>
               <div className="nav_item">
                 <a href="#" className="login">
