@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import React from "react";
-import Sary from "../assets/Images/magicpattern-mesh-gradient-1711489894773.jpeg";
+import Sary from "../assets/Images/font.jpeg";
 import { NavLink } from "react-router-dom";
 
 export const Card = () => {
