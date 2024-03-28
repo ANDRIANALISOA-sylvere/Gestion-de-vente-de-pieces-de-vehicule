@@ -12,11 +12,14 @@ export const Card = () => {
     <div className="col mt-2 mb-1">
       <div className="card border border-dark shadow-sm product_card">
         <div className="img_header">
-          <img
+          {/* <img
             src={Sary}
             alt=""
             style={{ width: "100%", height: "200px", objectFit: "cover" }}
-          />
+          /> */}
+          <div className="img">
+
+          </div>
           <div className="favoris">
             <AiOutlineHeart />
           </div>
