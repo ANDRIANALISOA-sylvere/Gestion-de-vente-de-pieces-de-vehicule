@@ -49,7 +49,7 @@ export default function Login() {
           </form>
         </section>
         <br />
-        <section className="section_footer_login mt-5 text-center">
+        <section className="section_footer_login mt-3 text-center">
           <p className="text-muted">&copy;copyright 2024, E-vendre</p>
         </section>
       </div>
