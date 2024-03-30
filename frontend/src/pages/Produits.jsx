@@ -179,6 +179,8 @@ export default function Produits() {
           </div>
         </div>
         <div className="col-md-8 ms-5">
+          <h4 className="text-muted">Tous les produits :</h4>
+          <hr style={{ opacity: "0.1" }} />
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
             <Card></Card>
             <Card></Card>

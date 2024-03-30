@@ -45,9 +45,9 @@ export default function Navbarwebsite() {
                 </NavLink>
               </div>
               <div className="nav_item">
-                <a href="#" className="login">
+                <NavLink to="/favoris" className="login">
                   <MdOutlineFavoriteBorder /> Favoris
-                </a>
+                </NavLink>
               </div>
               <div className="nav_item">
                 <a href="#" className="login">
