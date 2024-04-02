@@ -1,5 +1,4 @@
 import { FaRegComment } from "react-icons/fa";
-import { BsSend } from "react-icons/bs";
 import React from "react";
 import Sary from "../assets/Images/magicpattern-mesh-gradient-1711489894773.jpeg";
 import { Card } from "../components/Card";
