@@ -1,4 +1,4 @@
-import { AiOutlineUser } from "react-icons/ai"; 
+import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
@@ -45,14 +45,14 @@ export default function Navbarwebsite() {
                 </NavLink>
               </div>
               <div className="nav_item">
-                <a href="#" className="login">
+                <NavLink to="/favoris" className="login">
                   <MdOutlineFavoriteBorder /> Favoris
-                </a>
+                </NavLink>
               </div>
               <div className="nav_item">
-                <a href="#" className="login">
+                <NavLink to="/panier" className="login">
                   <AiOutlineShoppingCart /> Panier
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function Navbarwebsite() {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item navbar_item">
-                <NavLink className="nav-link text-light active" to='/'>
+                <NavLink className="nav-link text-light active" to="/">
                   Acceuil
                   <span className="visually-hidden">(current)</span>
                 </NavLink>
