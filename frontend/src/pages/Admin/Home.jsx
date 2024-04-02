@@ -41,9 +41,9 @@ function Home() {
               <i>
                 <AiOutlineUser />
               </i>
-              <span className="links_span">Utilisateur</span>
+              <span className="links_span">Utilisateurs</span>
             </NavLink>
-            <span className="tooltip">Utilisateur</span>
+            <span className="tooltip">Utilisateurs</span>
           </li>
           <li>
             <NavLink href="#">
