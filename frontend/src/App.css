@@ -123,6 +123,7 @@ body {
 .footer {
   background-color: #1e293b;
   color: white !important;
+  margin-top: 180px;
 }
 .footer a {
   color: white !important;
@@ -159,4 +160,7 @@ input:not(input[type="range"]):focus {
   outline: none !important;
   box-shadow: none !important;
   border: 2px solid #3b82f6 !important;
+}
+.panier {
+  background-color: #f8fafc;
 }

@@ -7,6 +7,7 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Favoris from "../../pages/Favoris";
 import PublicLayout from "../Layouts/PublicLayout";
+import Panier from "../../pages/Panier";
 
 function PublicRoutes() {
   return (
@@ -21,6 +22,7 @@ function PublicRoutes() {
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="signup" element={<Signup></Signup>}></Route>
         <Route path="favoris" element={<Favoris></Favoris>}></Route>
+        <Route path="panier" element={<Panier></Panier>}></Route>
       </Route>
     </Routes>
   );
