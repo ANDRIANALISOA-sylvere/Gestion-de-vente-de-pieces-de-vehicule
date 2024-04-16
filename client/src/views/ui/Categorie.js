@@ -1,7 +1,7 @@
 import React from "react";
 
-const Buttons = () => {
+const Categorie = () => {
   return <div>Catégories</div>;
 };
 
-export default Buttons;
+export default Categorie;

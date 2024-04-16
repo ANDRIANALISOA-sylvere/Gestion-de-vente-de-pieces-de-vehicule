@@ -1,7 +1,7 @@
 import React from "react";
 
-const Alerts = () => {
+const Fournisseur = () => {
   return <div>Fournisseurs</div>;
 };
 
-export default Alerts;
+export default Fournisseur;

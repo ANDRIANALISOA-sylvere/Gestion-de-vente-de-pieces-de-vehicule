@@ -1,6 +1,6 @@
 import { Button, Col, Input, Row } from "reactstrap";
 
-const Starter = () => {
+const Acceuil = () => {
   return (
     <div>
       <Row>
@@ -26,4 +26,4 @@ const Starter = () => {
   );
 };
 
-export default Starter;
+export default Acceuil;
