@@ -104,3 +104,30 @@ table {
   border-radius: var(--bs-card-border-radius);
   box-shadow: var(--bs-card-box-shadow);
 }
+
+.sidebar_search {
+  position: relative;
+}
+
+.custom-radius {
+  border-radius: 60px !important;
+}
+
+.custom-radius:focus {
+  border-radius: 60px !important;
+}
+
+.bg-white {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.form-control-icon {
+  position: absolute;
+  top: 5px;
+  right: 14px;
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  color: #78909c;
+}

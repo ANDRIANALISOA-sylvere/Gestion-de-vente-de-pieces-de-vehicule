@@ -4,9 +4,7 @@ import {
   Navbar,
   Collapse,
   Nav,
-  NavItem,
   NavbarBrand,
-  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
@@ -29,7 +27,12 @@ const Header = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
   return (
-    <Navbar light expand="md" className="fix-header mb-4 border-bottom">
+    <Navbar
+      light
+      expand="md"
+      className="fix-header mb-4 mb-5"
+      style={{ borderBottom: "1px solid #edf2f9" }}
+    >
       <div className="d-flex align-items-center">
         <NavbarBrand href="/">
           <LogoWhite className="d-lg-none" />
@@ -59,27 +62,7 @@ const Header = () => {
 
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
-          <NavItem>
-            <Link to="/starter" className="nav-link">
-              Starter
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/about" className="nav-link">
-              About
-            </Link>
-          </NavItem>
-          <UncontrolledDropdown inNavbar nav>
-            <DropdownToggle caret nav>
-              DD Menu
-            </DropdownToggle>
-            <DropdownMenu end>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
+          <span style={{color:"#78909C",fontWeight:'400',fontSize:'20px'}}>Tableau de bord</span>
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">

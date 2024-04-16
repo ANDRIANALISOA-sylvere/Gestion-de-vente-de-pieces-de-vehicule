@@ -1,21 +1,24 @@
 .sidebarArea {
   flex-shrink: 0;
   width: $sidebarWidth;
-  background-color: #0f172a !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  font-weight: 500;
   .nav-link {
-    color: rgba(255, 255, 255, 0.5);
+    color: #78909C;
   }
   .sidenav-bg:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    //background-color: #334155;
+    background-color: #ede9fe;
     border-radius: $border-radius;
     .nav-link {
-      color: white;
+      color: #8b5cf6;
     }
   }
   .sidenav-bg .active {
-    background-color: rgba(255, 255, 255, 0.1);
     border-radius: $border-radius;
-    color: white;
+    color: #8b5cf6;
+    font-weight: 500;
   }
 }
 
