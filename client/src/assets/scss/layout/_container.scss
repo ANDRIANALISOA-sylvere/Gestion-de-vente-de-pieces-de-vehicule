@@ -1,0 +1,106 @@
+* {
+  outline: 0;
+}
+.pageWrapper {
+  min-height: 100vh;
+}
+
+.contentArea {
+  flex-grow: 1;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.card {
+  box-shadow: $card-box-shadow;
+  margin-bottom: 30px;
+  background-color: $white;
+}
+
+.list-group-item {
+  background-color: $white !important;
+}
+
+.circle-box {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 100%;
+
+  &.lg-box {
+    width: 60px;
+    height: 60px;
+    font-size: 21px;
+    line-height: 60px;
+  }
+}
+
+.button-group .btn {
+  margin: 3px;
+}
+
+table {
+  th,
+  td {
+    background-color: $white !important;
+  }
+
+  th {
+    font-weight: 500;
+  }
+}
+
+.dropdown-menu {
+  background-color: $white !important;
+}
+
+.btn {
+  border-radius: 2px !important;
+  padding: 0.275rem 0.45rem !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  border-width: 1px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.075) !important;
+}
+
+.form-control {
+  display: block !important;
+  width: 100% !important;
+  padding: 6px 12px !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #0f172a !important;
+  background-color: white !important;
+  background-clip: padding-box !important;
+  border: 2px solid #e2e8f0 !important;
+  appearance: none !important;
+  border-radius: 5px !important;
+}
+
+.form-control:focus {
+  border: 2px solid #8b5cf6 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 5px !important;
+}
+
+.form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--bs-card-height);
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg);
+  background-clip: border-box;
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-border-radius);
+  box-shadow: var(--bs-card-box-shadow);
+}
