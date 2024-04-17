@@ -1,7 +1,18 @@
 import React from "react";
+import { useFecth } from "../../hooks/useFetch";
+import Loader from "../../layouts/loader/Loader";
 
 const Categorie = () => {
-  return <div>Catégories</div>;
+  const { donne, loading, error } = useFecth(
+    "http://localhost:5000/categorie/"
+  );
+  return (
+    <div>
+      {loading && <Loader></Loader>}
+      {JSON.stringify(donne)}
+      {error && <div>{error.message}</div>}
+    </div>
+  );
 };
 
 export default Categorie;

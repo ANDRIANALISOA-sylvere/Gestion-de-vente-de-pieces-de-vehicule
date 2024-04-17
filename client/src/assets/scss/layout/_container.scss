@@ -98,11 +98,11 @@ table {
   min-width: 0;
   height: var(--bs-card-height);
   word-wrap: break-word;
-  background-color: var(--bs-card-bg);
+  background-color: #fff;
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
-  box-shadow: var(--bs-card-box-shadow);
+  box-shadow: 0 1px 3px 0 rgba(169,184,200,.15) !important;
 }
 
 .sidebar_search {
