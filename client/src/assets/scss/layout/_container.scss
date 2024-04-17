@@ -101,8 +101,15 @@ table {
   background-color: #fff;
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-  border-radius: var(--bs-card-border-radius);
+  border-radius: 2px !important;
   box-shadow: 0 1px 3px 0 rgba(169,184,200,.15) !important;
+  margin-bottom: 30px;
+  padding: 8px;
+}
+
+.card-left
+{
+  background-color: #334155 !important;
 }
 
 .sidebar_search {
@@ -130,4 +137,9 @@ table {
   width: 20px;
   font-size: 20px;
   color: #78909c;
+}
+
+.border-end
+{
+  border-right: 1px solid #edf2f9 !important;
 }

@@ -1,5 +1,8 @@
+import Item from '../components/dashboard/Item'
 const Acceuil = () => {
-  return <div></div>;
+  return <div>
+    <Item></Item>
+  </div>;
 };
 
 export default Acceuil;
