@@ -1,55 +1,57 @@
 categorie :
-getall :http://localhost:3000/categorie/
-getById :http://localhost:3000/categorie/id
-Create:  http://localhost:3000/categorie/
-update : http://localhost:3000/categorie/id
-delete : http://localhost:3000/categorie/id
+getall :http://localhost:5000/categorie/
+getById :http://localhost:5000/categorie/id
+Create:  http://localhost:5000/categorie/
+update : http://localhost:5000/categorie/id
+delete : http://localhost:5000/categorie/id
 
 Marque :
-getall :http://localhost:3000/marque/
-getById :http://localhost:3000/marque/id
-Create:  http://localhost:3000/marque/
-update : http://localhost:3000/marque/id
-delete : http://localhost:3000/marque/id
+getall :http://localhost:5000/marque/
+getById :http://localhost:5000/marque/id
+Create:  http://localhost:5000/marque/
+update : http://localhost:5000/marque/id
+delete : http://localhost:5000/marque/id
 
 Client :
-getall : http://localhost:3000/client/
-getByid : http://localhost:3000/client/id
-create : http://localhost:3000/client/
-update : http://localhost:3000/client/id
-delete :http://localhost:3000/client/id
+getall : http://localhost:5000/client/
+getByid : http://localhost:5000/client/id
+create : http://localhost:5000/client/
+update : http://localhost:5000/client/id
+delete :http://localhost:5000/client/id
 
 Fournisseur :
-getall : http://localhost:3000/fournisseur/
-getbyid : http://localhost:3000/fournisseur/id
-create :  http://localhost:3000/fournisseur/
-update : http://localhost:3000/fournisseur/id
-delete : http://localhost:3000/fournisseur/id
+getall : http://localhost:5000/fournisseur/
+getbyid : http://localhost:5000/fournisseur/id
+create :  http://localhost:5000/fournisseur/
+update : http://localhost:5000/fournisseur/id
+delete : http://localhost:5000/fournisseur/id
 
 Piece :
-getall : http://localhost:3000/piece
-getByid : http://localhost:3000/piece/id
-create : http://localhost:3000/piece
-update : http://localhost:3000/piece/id
-delete : http://localhost:3000/piece/id
+getall : http://localhost:5000/piece
+getById : http://localhost:5000/piece/id
+create : http://localhost:5000/piece
+update : http://localhost:5000/piece/id
+delete : http://localhost:5000/piece/id
 
-EntreeStock : 
-getall : http://localhost:3000/entree
-getById : http://localhost:3000/entree/id
-create : http://localhost:3000/entree
-update : http://localhost:3000/entree/id
-delete : http://localhost:3000/entree/id
+EntreeStock :
+getall : http://localhost:5000/entree
+getById : http://localhost:5000/entree/id
+create : http://localhost:5000/entree
+update : http://localhost:5000/entree/id
+delete : http://localhost:5000/entree/id
 
-Sortie stock : 
-getall : http://localhost:3000/sortie
-getById : http://localhost:3000/sortie/id
-create : http://localhost:3000/sortie
-update :http://localhost:3000/sortie/id
-delete : http://localhost:3000/sortie/id
+SortieStock :
+getall : http://localhost:5000/sortie
+getById : http://localhost:5000/sortie/id
+create : http://localhost:5000/sortie
+update : http://localhost:5000/sortie/id
+delete : http://localhost:5000/sortie/id
 
 Commandes :
-getall : http://localhost:3000/commande
-getById : http://localhost:3000/commande/id
-create : http://localhost:3000/commande
-update : http://localhost:3000/commande/id
-delete :http://localhost:3000/commande/id
+getall : http://localhost:5000/commande
+getById : http://localhost:5000/commande/id
+create : http://localhost:5000/commande
+update : http://localhost:5000/commande/id
+delete : http://localhost:5000/commande/id
+
+

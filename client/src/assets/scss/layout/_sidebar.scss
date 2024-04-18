@@ -1,0 +1,39 @@
+.sidebarArea {
+  flex-shrink: 0;
+  width: $sidebarWidth;
+  box-shadow: none !important;
+  background-color: white !important;
+  font-weight: 500;
+  .nav-link {
+    color: #78909C;
+  }
+  .sidenav-bg:hover {
+    //background-color: #334155;
+    background-color: #ede9fe;
+    border-radius: $border-radius;
+    .nav-link {
+      color: #8b5cf6;
+    }
+  }
+  .sidenav-bg .active {
+    border-radius: $border-radius;
+    color: #8b5cf6;
+    background-color: #ede9fe;
+    font-weight: 500;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .sidebarArea {
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    z-index: 1;
+    margin-left: -$sidebarWidth;
+    transition: 0.2s ease-in;
+    &.showSidebar {
+      margin-left: 0px;
+    }
+  }
+}
