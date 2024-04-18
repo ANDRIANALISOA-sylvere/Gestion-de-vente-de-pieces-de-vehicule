@@ -25,3 +25,31 @@ getbyid : http://localhost:3000/fournisseur/id
 create :  http://localhost:3000/fournisseur/
 update : http://localhost:3000/fournisseur/id
 delete : http://localhost:3000/fournisseur/id
+
+Piece :
+getall : http://localhost:3000/piece
+getByid : http://localhost:3000/piece/id
+create : http://localhost:3000/piece
+update : http://localhost:3000/piece/id
+delete : http://localhost:3000/piece/id
+
+EntreeStock : 
+getall : http://localhost:3000/entree
+getById : http://localhost:3000/entree/id
+create : http://localhost:3000/entree
+update : http://localhost:3000/entree/id
+delete : http://localhost:3000/entree/id
+
+Sortie stock : 
+getall : http://localhost:3000/sortie
+getById : http://localhost:3000/sortie/id
+create : http://localhost:3000/sortie
+update :http://localhost:3000/sortie/id
+delete : http://localhost:3000/sortie/id
+
+Commandes :
+getall : http://localhost:3000/commande
+getById : http://localhost:3000/commande/id
+create : http://localhost:3000/commande
+update : http://localhost:3000/commande/id
+delete :http://localhost:3000/commande/id
