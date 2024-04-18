@@ -33,7 +33,4 @@ app.use(CommandeRoute)
 app.get("*",AuthMiddleware.Auth);
 app.get("/checkauth", AuthMiddleware.Auth, checkAuth.chechUserAuth);
 app.listen(process.env.PORT, console.log("server starting on port " + process.env.PORT));
-app.listen(
-  process.env.PORT,
-  console.log("server starting on port " + process.env.PORT)
-);
+
