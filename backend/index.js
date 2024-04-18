@@ -13,15 +13,27 @@ const PieceRoute = require('./Routes/PiecesRoute')
 const EntreeRoute = require('./Routes/EntreeStockRoute')
 const SortieRoute = require('./Routes/SortieRoute')
 const CommandeRoute = require('./Routes/CommandesRoute')
+const UtilisateurRoute = require("./Routes/UtilisateurRoute");
+const cookieParser = require("cookie-parser");
+const AuthMiddleware = require("./middleware/utilisateurMiddleware");
+const checkAuth = require("./Controllers/checkAuth");
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cookieParser());
 app.use(CategorieRoute);
 app.use(MarqueRoute);
+app.use(UtilisateurRoute);
 app.use(ClientRoute);
 app.use(FournisseurRoute);
 app.use(PieceRoute)
 app.use(EntreeRoute)
 app.use(SortieRoute)
 app.use(CommandeRoute)
+app.get("*",AuthMiddleware.Auth);
+app.get("/checkauth", AuthMiddleware.Auth, checkAuth.chechUserAuth);
 app.listen(process.env.PORT, console.log("server starting on port " + process.env.PORT));
+app.listen(
+  process.env.PORT,
+  console.log("server starting on port " + process.env.PORT)
+);
