@@ -1,6 +1,7 @@
 import { TbBrandAlgolia } from "react-icons/tb";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Fond from "../assets/images/bg/photo-1536782376847-5c9d14d97cc0 (1).avif";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -94,7 +95,7 @@ export default function Login() {
         <div className="col-12 col-lg-5 h-100 p-0">
           <img
             alt="Vehicle parts"
-            src="https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            src={Fond}
             className="img-fluid h-100 w-100"
           />
         </div>
