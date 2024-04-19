@@ -19,10 +19,8 @@ export default function Login() {
         { email, mdp }
       );
       const data = await response.data;
-      // Gérer la réponse de l'API (par exemple, enregistrer le jeton dans le localStorage)
       localStorage.setItem("token", data.token);
       console.log(data.token);
-      // Rediriger vers une autre page ou effectuer d'autres actions
       navigate("/vente");
       setErreur("");
     } catch (error) {

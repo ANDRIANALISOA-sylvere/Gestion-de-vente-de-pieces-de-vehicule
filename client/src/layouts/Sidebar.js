@@ -1,3 +1,4 @@
+import { CgEditBlackPoint } from "react-icons/cg";
 import { BiSearchAlt } from "react-icons/bi";
 import { MdManageAccounts } from "react-icons/md";
 import { AiFillIdcard } from "react-icons/ai";
@@ -12,6 +13,9 @@ import { HiHome } from "react-icons/hi";
 import { Button, Input, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const navigation = [
   {
@@ -67,6 +71,14 @@ const navigation = [
 ];
 
 const Sidebar = () => {
+  const [showStockSubMenu, setShowStockSubMenu] = useState(false);
+  const toggleStockSubMenu = (navi) => {
+    if (navi.title === "Stocks") {
+      setShowStockSubMenu(!showStockSubMenu);
+    } else {
+      setShowStockSubMenu(false);
+    }
+  };
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
@@ -107,10 +119,55 @@ const Sidebar = () => {
                     ? "active nav-link py-2"
                     : "nav-link py-2"
                 }
+                onClick={() => toggleStockSubMenu(navi)}
               >
-                <i>{navi.icon}</i>
-                <span className="ms-3 d-inline-block">{navi.title}</span>
+                <div className="icon-container">
+                  <span>
+                    <i>{navi.icon}</i>
+                    <span className="ms-3 d-inline-block">{navi.title}</span>
+                  </span>
+                  {navi.title === "Stocks" && (
+                    <i
+                      className={`rotate-icon ${
+                        showStockSubMenu ? "open" : ""
+                      }`}
+                    >
+                      {showStockSubMenu ? <FaChevronUp /> : <FaChevronDown />}
+                    </i>
+                  )}
+                </div>
               </Link>
+              {navi.title === "Stocks" && (
+                <TransitionGroup>
+                  {showStockSubMenu && (
+                    <CSSTransition
+                      key="sub-menu"
+                      timeout={200}
+                      classNames="sub-menu-animation"
+                      unmountOnExit
+                    >
+                      <div className="sub-menu">
+                        <Link
+                          to="/vente/stocks/entrees"
+                          className="nav-link py-2"
+                        >
+                          <span className="ms-3 d-inline-block">
+                            <CgEditBlackPoint /> Entrées
+                          </span>
+                        </Link>
+                        <Link
+                          to="/vente/stocks/sorties"
+                          className="nav-link py-2"
+                        >
+                          <span className="ms-3 d-inline-block">
+                            <CgEditBlackPoint /> Sorties
+                          </span>
+                        </Link>
+                      </div>
+                    </CSSTransition>
+                  )}
+                </TransitionGroup>
+              )}
             </NavItem>
           ))}
         </Nav>

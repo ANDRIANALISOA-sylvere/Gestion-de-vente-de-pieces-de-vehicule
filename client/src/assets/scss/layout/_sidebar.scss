@@ -5,7 +5,7 @@
   background-color: white !important;
   font-weight: 500;
   .nav-link {
-    color: #78909C;
+    color: #78909c;
   }
   .sidenav-bg:hover {
     //background-color: #334155;
@@ -14,6 +14,11 @@
     .nav-link {
       color: #8b5cf6;
     }
+    .sub-menu {
+      .nav-link {
+        color: #78909c; // Couleur de texte souhaitée pour les liens du sous-menu au survol
+      }
+    }
   }
   .sidenav-bg .active {
     border-radius: $border-radius;
@@ -21,6 +26,18 @@
     background-color: #ede9fe;
     font-weight: 500;
   }
+}
+
+.sub-menu {
+  background-color: #f8f9fa; /* Couleur de fond pour le sous-menu */
+  padding: 0.5rem 0; /* Ajoutez un peu d'espacement intérieur si nécessaire */
+}
+
+.sub-menu .nav-link {
+  color: #78909c; /* Couleur du texte pour les liens du sous-menu */
+}
+.sub-menu .nav-link:hover {
+  background-color: #e9eaeb; /* Couleur du texte pour les liens du sous-menu */
 }
 
 @include media-breakpoint-down(lg) {

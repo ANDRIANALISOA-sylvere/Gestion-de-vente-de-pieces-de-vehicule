@@ -1,0 +1,29 @@
+/* Animations pour le sous-menu */
+.sub-menu-animation-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.sub-menu-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.sub-menu-animation-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sub-menu-animation-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
