@@ -97,7 +97,7 @@ const Header = () => {
               onClick={handleLogout}
               className="text-danger hover_logout"
             >
-              <BiLogOut /> Logout
+              <BiLogOut /> Se déconnecter
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

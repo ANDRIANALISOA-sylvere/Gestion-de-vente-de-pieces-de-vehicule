@@ -12,10 +12,10 @@ import { FaTachometerAlt } from "react-icons/fa";
 import { HiHome } from "react-icons/hi";
 import { Button, Input, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "./Logo";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TbBrandAlgolia } from "react-icons/tb";
 
 const navigation = [
   {
@@ -95,8 +95,19 @@ const Sidebar = () => {
           <i className="bi bi-x"></i>
         </Button>
       </div>
-      <div className="d-lg-block d-none me-5 ms-4 text-white pe-3 text-center mt-4">
-        <Logo></Logo>
+      <div className="d-lg-block d-none ms-4 me-3 text-dark pe-3 text-center mt-4">
+        <div className="d-flex align-items-center justify-content-between">
+          <TbBrandAlgolia
+            style={{ fontSize: "35px" }}
+            className="text-primary"
+          />
+          <span
+            className="font-bold text-gray-900"
+            style={{ fontSize: "20px" }}
+          >
+            CarParts Central
+          </span>
+        </div>
       </div>
       <div className="p-3 mt-4">
         <div className="sidebar_search">

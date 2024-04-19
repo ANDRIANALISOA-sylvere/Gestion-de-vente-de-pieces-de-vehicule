@@ -101,7 +101,7 @@ export default function Login() {
           <img
             alt="Vehicle parts"
             src={Fond}
-            className="img-fluid h-100 w-100"
+            className="img-fluid h-100 w-100 object-fit-cover"
           />
         </div>
       </div>
