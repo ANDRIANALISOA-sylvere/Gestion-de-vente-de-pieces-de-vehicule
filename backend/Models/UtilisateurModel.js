@@ -68,13 +68,13 @@ class UtilisateurModel {
         if (err) {
           callback(err);
         } else if (result.length === 0) {
-          callback(null, false, "Email incorrecte");
+          callback(null, false, {email : "Email incorrecte"});
         } else {
           bcrypt.compare(mdp, result[0].mdp, (err, isMatch) => {
             if (err) {
               callback(err);
             } else if (isMatch === false) {
-              callback(null, false, "Mot de passe incorrecte");
+              callback(null, false, {mdp : "Mot de passe incorrecte"});
             } else {
               const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
               const token = jwt.sign(

@@ -2,35 +2,31 @@ import { TbBrandAlgolia } from "react-icons/tb";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Fond from "../assets/images/bg/photo-1536782376847-5c9d14d97cc0 (1).avif";
+import axios from "axios";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [mdp, setMdp] = useState("");
   const navigate = useNavigate();
+  const [erreur, setErreur] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/loginutilisateur/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, mdp }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // Gérer la réponse de l'API (par exemple, enregistrer le jeton dans le localStorage)
-        localStorage.setItem("token", data.token);
-        // Rediriger vers une autre page ou effectuer d'autres actions
-        navigate("/vente");
-      } else {
-        console.error("Erreur de connexion");
-      }
+      const response = await axios.post(
+        "http://localhost:5000/loginutilisateur/",
+        { email, mdp }
+      );
+      const data = await response.data;
+      // Gérer la réponse de l'API (par exemple, enregistrer le jeton dans le localStorage)
+      localStorage.setItem("token", data.token);
+      console.log(data.token);
+      // Rediriger vers une autre page ou effectuer d'autres actions
+      navigate("/vente");
+      setErreur("");
     } catch (error) {
-      console.error("Erreur :", error);
+      setErreur(error.response.data.message);
     }
   };
 
@@ -67,6 +63,10 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+
+                  {erreur.email && (
+                    <small className="text-danger">Votre email est incorrecte</small>
+                  )}
                 </div>
                 <div className="col-12">
                   <label htmlFor="Password" className="form-label">
@@ -81,6 +81,9 @@ export default function Login() {
                     value={mdp}
                     onChange={(e) => setMdp(e.target.value)}
                   />
+                  {erreur.mdp && (
+                    <small className="text-danger">Votre mot de passe est incorrecte</small>
+                  )}
                 </div>
                 <div className="col-12 col-sm-auto block d-flex justify-content-end">
                   <button type="submit" className="btn btn-primary">
