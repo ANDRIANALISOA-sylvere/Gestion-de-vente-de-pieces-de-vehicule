@@ -3,31 +3,62 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Fond from "../assets/images/bg/bg.avif";
 import axios from "axios";
+import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [mdp, setMdp] = useState("");
   const navigate = useNavigate();
-  const [erreur, setErreur] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/loginutilisateur/",
-        { email, mdp }
-      );
-      const data = await response.data;
-      localStorage.setItem("token", data.token);
-      console.log(data.token);
-      navigate("/vente");
-      setErreur("");
-    } catch (error) {
-      setErreur(error.response.data.message);
+    let emailError = "";
+    let passwordError = "";
+
+    if (!email) {
+      emailError = "Email requis";
+    }
+
+    if (!mdp) {
+      passwordError = "Mot de passe requis";
+    }
+
+    if (emailError || passwordError) {
+      setEmailError(emailError);
+      setPasswordError(passwordError);
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/loginutilisateur/",
+          { email, mdp }
+        );
+        const data = await response.data;
+        localStorage.setItem("token", data.token);
+        console.log(data.token);
+        navigate("/vente");
+        setEmailError("");
+        setPasswordError("");
+      } catch (error) {
+        const errorMessage = error.response.data.message;
+
+        if (errorMessage.email) {
+          console.log(errorMessage.email);
+          setEmailError(errorMessage.email);
+        } else {
+          setEmailError("");
+        }
+
+        if (errorMessage.mdp) {
+          setPasswordError(errorMessage.mdp);
+        } else {
+          setPasswordError("");
+        }
+      }
     }
   };
-
   return (
     <section className="bg-white d-flex align-items-stretch">
       <div className="row flex-grow-1 m-0">
@@ -46,54 +77,65 @@ export default function Login() {
               clients heureux et atteignez vos objectifs avec passion et
               dévouement !
             </p>
-            <form onSubmit={handleSubmit} className="mt-8">
+            <Form onSubmit={handleSubmit} className="mt-8">
               <div className="row g-3">
                 <div className="col-12">
-                  <label htmlFor="Email" className="form-label">
+                  <Label htmlFor="Email" className="form-label">
                     Email
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type="email"
                     id="Email"
                     name="email"
-                    className="form-control"
+                    className={`form-control ${
+                      emailError ? "is-invalid input-error" : ""
+                    }`}
                     placeholder="Entrer votre email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
 
-                  {erreur.email && (
-                    <small className="text-danger">
-                      Votre email est incorrecte
-                    </small>
+                  {emailError && typeof emailError === "string" && (
+                    <FormFeedback>{emailError}</FormFeedback>
+                  )}
+                  {emailError && typeof emailError === "object" && (
+                    <FormFeedback>
+                      {Object.values(emailError).join(", ")}
+                    </FormFeedback>
                   )}
                 </div>
                 <div className="col-12">
-                  <label htmlFor="Password" className="form-label">
+                  <Label htmlFor="Password" className="form-label">
                     Mot de passe
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type="password"
                     id="Password"
                     name="password"
-                    className="form-control"
+                    className={`form-control ${
+                      passwordError ? "input-error is-invalid" : ""
+                    }`}
                     placeholder="Entrer votre mot de passe"
                     value={mdp}
                     onChange={(e) => setMdp(e.target.value)}
                   />
-                  {erreur.mdp && (
-                    <small className="text-danger">
-                      Votre mot de passe est incorrecte
-                    </small>
+
+                  {passwordError && typeof passwordError === "string" && (
+                    <FormFeedback>{passwordError}</FormFeedback>
+                  )}
+                  {passwordError && typeof passwordError === "object" && (
+                    <FormFeedback>
+                      {Object.values(passwordError).join(", ")}
+                    </FormFeedback>
                   )}
                 </div>
                 <div className="col-12 col-sm-auto block d-flex justify-content-end">
-                  <button type="submit" className="btn btn-primary">
+                  <Button type="submit" className="btn" color="primary">
                     Se connecter
-                  </button>
+                  </Button>
                 </div>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
         <div className="col-12 col-lg-1 h-100 p-0"></div>
