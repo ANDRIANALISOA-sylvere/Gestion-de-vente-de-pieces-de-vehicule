@@ -16,52 +16,52 @@ import Logo from "./Logo";
 const navigation = [
   {
     title: "Tableau de bord",
-    href: "/accueil",
+    href: "/vente/accueil",
     icon: <FaTachometerAlt />,
   },
   {
     title: "Fournisseurs",
-    href: "/fournisseurs",
+    href: "/vente/fournisseurs",
     icon: <HiHome />,
   },
   {
     title: "Clients",
-    href: "/clients",
+    href: "/vente/clients",
     icon: <FaUserAlt />,
   },
   {
     title: "Catégories",
-    href: "/categories",
+    href: "/vente/categories",
     icon: <BsFillGridFill />,
   },
   {
     title: "Marques",
-    href: "/marques",
+    href: "/vente/marques",
     icon: <AiFillFileMarkdown />,
   },
   {
     title: "Pièces",
-    href: "/pieces",
+    href: "/vente/pieces",
     icon: <CgShare />,
   },
   {
     title: "Stocks",
-    href: "/stocks",
+    href: "/vente/stocks",
     icon: <AiFillDatabase />,
   },
   {
     title: "Commandes",
-    href: "/commandes",
+    href: "/vente/commandes",
     icon: <BsFillCartFill />,
   },
   {
     title: "Employes",
-    href: "/employes",
+    href: "/vente/employes",
     icon: <AiFillIdcard />,
   },
   {
     title: "Profile",
-    href: "/profile",
+    href: "/vente/profile",
     icon: <MdManageAccounts />,
   },
 ];

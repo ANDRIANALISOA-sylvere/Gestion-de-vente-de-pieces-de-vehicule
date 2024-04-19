@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { BiLogOut } from "react-icons/bi";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Navbar,
   Collapse,
@@ -26,6 +28,13 @@ const Header = () => {
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <Navbar
       light
@@ -62,7 +71,11 @@ const Header = () => {
 
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
-          <span style={{color:"#78909C",fontWeight:'400',fontSize:'20px'}}>Tableau de bord</span>
+          <span
+            style={{ color: "#78909C", fontWeight: "400", fontSize: "20px" }}
+          >
+            Tableau de bord
+          </span>
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">
@@ -80,7 +93,12 @@ const Header = () => {
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>
             <DropdownItem>Inbox</DropdownItem>
-            <DropdownItem>Logout</DropdownItem>
+            <DropdownItem
+              onClick={handleLogout}
+              className="text-danger hover_logout"
+            >
+              <BiLogOut /> Logout
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Collapse>

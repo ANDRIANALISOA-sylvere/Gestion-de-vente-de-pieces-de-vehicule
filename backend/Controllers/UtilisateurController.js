@@ -58,7 +58,7 @@ class UtilisateurController {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
         });
-        res.json("Authentification avec succès");
+        res.json({token : utilisateur.token});
       }
     });
   }
