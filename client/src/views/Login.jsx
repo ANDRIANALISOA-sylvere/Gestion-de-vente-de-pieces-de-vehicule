@@ -1,7 +1,7 @@
 import { TbBrandAlgolia } from "react-icons/tb";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Fond from "../assets/images/bg/photo-1536782376847-5c9d14d97cc0 (1).avif";
+import Fond from "../assets/images/bg/bg.avif";
 import axios from "axios";
 
 export default function Login() {
@@ -63,7 +63,9 @@ export default function Login() {
                   />
 
                   {erreur.email && (
-                    <small className="text-danger">Votre email est incorrecte</small>
+                    <small className="text-danger">
+                      Votre email est incorrecte
+                    </small>
                   )}
                 </div>
                 <div className="col-12">
@@ -80,7 +82,9 @@ export default function Login() {
                     onChange={(e) => setMdp(e.target.value)}
                   />
                   {erreur.mdp && (
-                    <small className="text-danger">Votre mot de passe est incorrecte</small>
+                    <small className="text-danger">
+                      Votre mot de passe est incorrecte
+                    </small>
                   )}
                 </div>
                 <div className="col-12 col-sm-auto block d-flex justify-content-end">
