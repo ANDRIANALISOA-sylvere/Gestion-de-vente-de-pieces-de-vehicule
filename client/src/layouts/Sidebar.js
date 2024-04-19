@@ -109,68 +109,70 @@ const Sidebar = () => {
             <BiSearchAlt />
           </i>
         </div>
-        <Nav vertical className="sidebarNav mt-2">
-          {navigation.map((navi, index) => (
-            <NavItem key={index} className="sidenav-bg mt-2">
-              <Link
-                to={navi.href}
-                className={
-                  location.pathname === navi.href
-                    ? "active nav-link py-2"
-                    : "nav-link py-2"
-                }
-                onClick={() => toggleStockSubMenu(navi)}
-              >
-                <div className="icon-container">
-                  <span>
-                    <i>{navi.icon}</i>
-                    <span className="ms-3 d-inline-block">{navi.title}</span>
-                  </span>
-                  {navi.title === "Stocks" && (
-                    <i
-                      className={`rotate-icon ${
-                        showStockSubMenu ? "open" : ""
-                      }`}
-                    >
-                      {showStockSubMenu ? <FaChevronUp /> : <FaChevronDown />}
-                    </i>
-                  )}
-                </div>
-              </Link>
-              {navi.title === "Stocks" && (
-                <TransitionGroup>
-                  {showStockSubMenu && (
-                    <CSSTransition
-                      key="sub-menu"
-                      timeout={200}
-                      classNames="sub-menu-animation"
-                      unmountOnExit
-                    >
-                      <div className="sub-menu">
-                        <Link
-                          to="/vente/stocks/entrees"
-                          className="nav-link py-2"
-                        >
-                          <span className="ms-3 d-inline-block">
-                            <CgEditBlackPoint /> Entrées
-                          </span>
-                        </Link>
-                        <Link
-                          to="/vente/stocks/sorties"
-                          className="nav-link py-2"
-                        >
-                          <span className="ms-3 d-inline-block">
-                            <CgEditBlackPoint /> Sorties
-                          </span>
-                        </Link>
-                      </div>
-                    </CSSTransition>
-                  )}
-                </TransitionGroup>
-              )}
-            </NavItem>
-          ))}
-        </Nav>
+        <div className="sidebar-content">
+          <Nav vertical className="sidebarNav mt-2">
+            {navigation.map((navi, index) => (
+              <NavItem key={index} className="sidenav-bg mt-2">
+                <Link
+                  to={navi.href}
+                  className={
+                    location.pathname === navi.href
+                      ? "active nav-link py-2"
+                      : "nav-link py-2"
+                  }
+                  onClick={() => toggleStockSubMenu(navi)}
+                >
+                  <div className="icon-container">
+                    <span>
+                      <i>{navi.icon}</i>
+                      <span className="ms-3 d-inline-block">{navi.title}</span>
+                    </span>
+                    {navi.title === "Stocks" && (
+                      <i
+                        className={`rotate-icon ${
+                          showStockSubMenu ? "open" : ""
+                        }`}
+                      >
+                        {showStockSubMenu ? <FaChevronUp /> : <FaChevronDown />}
+                      </i>
+                    )}
+                  </div>
+                </Link>
+                {navi.title === "Stocks" && (
+                  <TransitionGroup>
+                    {showStockSubMenu && (
+                      <CSSTransition
+                        key="sub-menu"
+                        timeout={200}
+                        classNames="sub-menu-animation"
+                        unmountOnExit
+                      >
+                        <div className="sub-menu">
+                          <Link
+                            to="/vente/stocks/entrees"
+                            className="nav-link py-2"
+                          >
+                            <span className="ms-3 d-inline-block">
+                              <CgEditBlackPoint /> Entrées
+                            </span>
+                          </Link>
+                          <Link
+                            to="/vente/stocks/sorties"
+                            className="nav-link py-2"
+                          >
+                            <span className="ms-3 d-inline-block">
+                              <CgEditBlackPoint /> Sorties
+                            </span>
+                          </Link>
+                        </div>
+                      </CSSTransition>
+                    )}
+                  </TransitionGroup>
+                )}
+              </NavItem>
+            ))}
+          </Nav>
+        </div>
       </div>
     </div>
   );

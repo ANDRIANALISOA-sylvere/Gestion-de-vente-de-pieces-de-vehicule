@@ -54,3 +54,25 @@
     }
   }
 }
+
+.sidebar-content {
+  max-height: calc(100vh - 150px); /* Ajustez cette valeur selon vos besoins */
+  overflow-y: auto;
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 8px; /* Largeur de la barre de défilement */
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Couleur de fond de la piste de défilement */
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background-color: #a3a3a3; /* Couleur du pouce de défilement */
+  border-radius: 4px; /* Arrondi des coins du pouce de défilement */
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background-color: #7a7a7a; /* Couleur du pouce de défilement au survol */
+}
