@@ -1,6 +1,5 @@
 import { GiEarthAmerica } from "react-icons/gi"; 
 import { AiFillFileAdd } from "react-icons/ai"; 
-import { MdCreateNewFolder } from "react-icons/md"; 
 import { AiOutlineDollarCircle } from "react-icons/ai"; 
 import { AiOutlineUser } from "react-icons/ai"; 
 import React from "react";

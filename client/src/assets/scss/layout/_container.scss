@@ -172,8 +172,7 @@ table {
   border-color: var(--bs-danger) !important;
 }
 
-.input-error:focus
-{
+.input-error:focus {
   border-color: var(--bs-danger) !important;
 }
 
@@ -184,3 +183,75 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important; /* Pour les navigateurs basés sur Chromium */
   -webkit-autofill-background-color: transparent !important; /* Pour les navigateurs basés sur Chromium */
 }
+
+.mydiv {
+  overflow-x: auto;
+  position: relative;
+}
+
+table {
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: left;
+  color: #6b7280;
+}
+
+thead {
+  font-size: 0.90rem;
+  line-height: 1rem;
+  color: #374151;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+thead th {
+  border-bottom: none;
+}
+
+th {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.thnext {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+}
+
+td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.lien {
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.lien:hover {
+  text-decoration: underline;
+}
+
+th,
+td {
+  border-bottom: 1px solid #f7f7f7;
+}
+
+/* tr:nth-child(odd) {
+  background-color: white;
+} */
+
+/* tr:nth-child(even) {
+  background-color: red;
+} */
