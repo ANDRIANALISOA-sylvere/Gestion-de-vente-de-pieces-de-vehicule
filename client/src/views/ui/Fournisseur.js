@@ -9,6 +9,7 @@ import Loader from "../../layouts/loader/Loader";
 import DropdownActions from "../../components/DropdownActions/DropdownActions";
 import ModalFournisseur from "../../components/ModalForm/ModalFournisseur";
 import "react-toastify/dist/ReactToastify.css";
+import { useSweetAlert } from "../../hooks/SweetAlert/useSweetAlert";
 
 const Fournisseur = () => {
   const { notify, alertError } = useToast();
@@ -20,6 +21,7 @@ const Fournisseur = () => {
   const [delayLoading, setDelayLoading] = useState(true);
   const toggleModal = () => setModal(!modal);
   const toggleModalUpdate = () => setModalUpdate(!modalupdate);
+  const { showConfirmationAlert } = useSweetAlert();
   const [add, setAdd] = useState({
     ID_Fournisseur: "",
     Nom: "",
@@ -103,16 +105,20 @@ const Fournisseur = () => {
     setSearchString(newValue);
   };
 
-  const deleteFournisseur = async (id) => {
+  const deleteFournisseur = (id) => {
     try {
-      const res = await axios.delete("http://localhost:5000/fournisseur/" + id);
-      setData(
-        [...data].filter((prev) => {
-          return prev.ID_Fournisseur !== id;
-        })
-      );
-      notify(res.data.message);
-      setSelectedRow(null);
+      showConfirmationAlert(async () => {
+        const res = await axios.delete(
+          "http://localhost:5000/fournisseur/" + id
+        );
+        setData(
+          [...data].filter((prev) => {
+            return prev.ID_Fournisseur !== id;
+          })
+        );
+        notify(res.data.message);
+        setSelectedRow(null);
+      });
     } catch (error) {
       alertError(error.message);
     }
