@@ -1,20 +1,28 @@
-import { HiOutlineTrash } from "react-icons/hi";
+// Importations des bibliothèques externes
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useToast } from "../../hooks/Toast/useToast";
-import { ToastContainer } from "react-toastify";
-import { useFecth } from "../../hooks/Fetch/useFetch";
+import "react-toastify/dist/ReactToastify.css";
+
+// Importations des icônes
+import { HiOutlineTrash } from "react-icons/hi";
+import { BsPersonAdd } from "react-icons/bs";
+import { BiEditAlt } from "react-icons/bi";
+
+// Importations des composants
 import SearchInput from "../../components/searchInput/searchInput";
 import TableFournisseur from "../../components/TableFournisseur";
 import Loader from "../../layouts/loader/Loader";
 import DropdownActions from "../../components/DropdownActions/DropdownActions";
 import ModalFournisseur from "../../components/ModalForm/ModalFournisseur";
-import "react-toastify/dist/ReactToastify.css";
+
+// Importations des hooks personnalisés
+import { useToast } from "../../hooks/Toast/useToast";
+import { ToastContainer } from "react-toastify";
+import { useFecth } from "../../hooks/Fetch/useFetch";
 import { useSweetAlert } from "../../hooks/SweetAlert/useSweetAlert";
-import { BsPersonAdd } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
 
 const Fournisseur = () => {
+  // Utilisation des hooks
   const { notify, alertError } = useToast();
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
@@ -44,31 +52,12 @@ const Fournisseur = () => {
     { name: "Tel", label: "N° Téléphone", type: "tel" },
   ];
 
-  // const fields = [
-  //   { name: "ID_Fournisseur", label: "Identifiant", type: "text" },
-  //   { name: "Nom", label: "Nom", type: "text" },
-  //   { name: "Adresse", label: "Adresse", type: "text" },
-  //   { name: "Tel", label: "N° Téléphone", type: "tel" },
-  //   { name: "Categorie", label: "Catégorie", type: "select", options: [
-  //     { value: "option1", label: "Option 1" },
-  //     { value: "option2", label: "Option 2" },
-  //     { value: "option3", label: "Option 3" }
-  //   ]}
-  // ];
-  // const { donne: categories, loading: loadingCategories, error: errorCategories } = useFetch('http://localhost:5000/categories');
-
-  // const fields = [
-  //   { name: 'ID_Fournisseur', label: 'Identifiant', type: 'text' },
-  //   { name: 'Nom', label: 'Nom', type: 'text' },
-  //   { name: 'Adresse', label: 'Adresse', type: 'text' },
-  //   { name: 'Tel', label: 'N° Téléphone', type: 'tel' },
-  //   { name: 'Categorie', label: 'Catégorie', type: 'select', options: categories },
-  // ];
-
+  // Récupération des données depuis l'API
   const { donne, loading, error } = useFecth(
     "http://localhost:5000/fournisseur/"
   );
 
+  // Filtrage des données selon la chaîne de recherche
   const filteredLibraries = searchString.trim().toLowerCase()
     ? data.filter(
         (i) =>
@@ -80,10 +69,12 @@ const Fournisseur = () => {
       )
     : data;
 
+  // Mise à jour des données lorsqu'elles sont récupérées
   useEffect(() => {
     setData(donne);
   }, [donne]);
 
+  // Délai d'affichage du loader
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setDelayLoading(false);
@@ -92,10 +83,12 @@ const Fournisseur = () => {
     return () => clearTimeout(loadingTimeout);
   }, []);
 
+  // Mise à jour des données de mise à jour lorsqu'une ligne est sélectionnée
   useEffect(() => {
     setUpdate(selectedRow);
   }, [selectedRow]);
 
+  // Gestion de la sélection et de la désélection des lignes
   const onRowSelect = (row) => {
     setSelectedRow(row);
   };
@@ -104,10 +97,12 @@ const Fournisseur = () => {
     setSelectedRow(null);
   };
 
+  // Gestion du changement de la chaîne de recherche
   const handleSearchChange = (newValue) => {
     setSearchString(newValue);
   };
 
+  // Suppression d'un fournisseur
   const deleteFournisseur = (id) => {
     try {
       showConfirmationAlert(async () => {
@@ -126,6 +121,8 @@ const Fournisseur = () => {
       alertError(error.message);
     }
   };
+
+  // Ajout d'un nouveau fournisseur
   const postFournisseur = async () => {
     if (!add.ID_Fournisseur || !add.Nom || !add.Adresse || !add.Tel) {
       alertError("Tous les champs sont obligatoires");
@@ -146,6 +143,8 @@ const Fournisseur = () => {
       }
     }
   };
+
+  // Mise à jour d'un fournisseur existant
   const updateFournisseur = async () => {
     if (
       !update.ID_Fournisseur ||
@@ -174,14 +173,19 @@ const Fournisseur = () => {
       }
     }
   };
+
+  // Gestion de la soumission du formulaire d'ajout
   const handleSubmitFournisseur = (e) => {
     e.preventDefault();
     postFournisseur();
   };
+
+  // Gestion de la soumission du formulaire de mise à jour
   const handleSubmitFournisseurUpdating = (e) => {
     e.preventDefault();
     updateFournisseur();
   };
+
   return (
     <div>
       <ToastContainer autoClose={3000} />
@@ -218,6 +222,8 @@ const Fournisseur = () => {
           ></TableFournisseur>
         </div>
       )}
+
+      {/* Modal pour ajouter un nouveau fournisseur */}
       <ModalFournisseur
         modal={modal}
         toggleModal={toggleModal}
@@ -227,6 +233,8 @@ const Fournisseur = () => {
         handleSubmit={handleSubmitFournisseur}
         title="Nouveau Fournisseur"
       />
+
+      {/* Modal pour mettre à jour un fournisseur existant */}
       {update && (
         <ModalFournisseur
           modal={modalupdate}

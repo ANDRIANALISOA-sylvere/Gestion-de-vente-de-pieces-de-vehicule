@@ -1,23 +1,31 @@
-import { TbBrandAlgolia } from "react-icons/tb";
+// Importations des dépendances
 import React, { useState } from "react";
+import { TbBrandAlgolia } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
-import Fond from "../assets/images/bg/bg.avif";
-import axios from "axios";
 import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
+import axios from "axios";
 
-export default function Login() {
+// Importation de l'image de fond
+import Fond from "../assets/images/bg/bg.avif";
+
+const Login = () => {
+  // État local pour stocker l'email, le mot de passe et les erreurs
   const [email, setEmail] = useState("");
   const [mdp, setMdp] = useState("");
-  const navigate = useNavigate();
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  // Hook pour la navigation
+  const navigate = useNavigate();
+
+  // Fonction de soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let emailError = "";
     let passwordError = "";
 
+    // Validation des champs
     if (!email) {
       emailError = "Email requis";
     }
@@ -26,11 +34,13 @@ export default function Login() {
       passwordError = "Mot de passe requis";
     }
 
+    // Vérification des erreurs
     if (emailError || passwordError) {
       setEmailError(emailError);
       setPasswordError(passwordError);
     } else {
       try {
+        // Appel à l'API pour l'authentification
         const response = await axios.post(
           "http://localhost:5000/loginutilisateur/",
           { email, mdp }
@@ -42,6 +52,7 @@ export default function Login() {
         setEmailError("");
         setPasswordError("");
       } catch (error) {
+        // Gestion des erreurs de l'API
         const errorMessage = error.response.data.message;
 
         if (errorMessage.email) {
@@ -59,9 +70,11 @@ export default function Login() {
       }
     }
   };
+
   return (
     <section className="bg-white d-flex align-items-stretch">
       <div className="row flex-grow-1 m-0">
+        {/* Colonne de gauche avec le formulaire de connexion */}
         <div className="col-12 col-lg-6 d-flex align-items-center p-5">
           <div className="w-100">
             <a className="d-block text-primary" href="#">
@@ -71,14 +84,13 @@ export default function Login() {
               CarParts Central 🚙
             </h1>
             <p className="mt-4 text-gray-500 text-muted">
-              {/* Gérez efficacement votre inventaire de pièces automobiles et
-              optimisez vos ventes avec notre application intuitive. */}
               Une nouvelle opportunité de briller vous attend. Rendez vos
               clients heureux et atteignez vos objectifs avec passion et
               dévouement !
             </p>
             <Form onSubmit={handleSubmit} className="mt-8">
               <div className="row g-3">
+                {/* Champ de saisie de l'email */}
                 <div className="col-12">
                   <Label htmlFor="Email" className="form-label">
                     Email
@@ -104,6 +116,8 @@ export default function Login() {
                     </FormFeedback>
                   )}
                 </div>
+
+                {/* Champ de saisie du mot de passe */}
                 <div className="col-12">
                   <Label htmlFor="Password" className="form-label">
                     Mot de passe
@@ -129,6 +143,8 @@ export default function Login() {
                     </FormFeedback>
                   )}
                 </div>
+
+                {/* Bouton de soumission du formulaire */}
                 <div className="col-12 col-sm-auto block d-flex justify-content-end">
                   <Button type="submit" className="btn" color="primary">
                     Se connecter
@@ -138,7 +154,11 @@ export default function Login() {
             </Form>
           </div>
         </div>
+
+        {/* Colonne vide */}
         <div className="col-12 col-lg-1 h-100 p-0"></div>
+
+        {/* Colonne de droite avec l'image de fond */}
         <div className="col-12 col-lg-5 h-100 p-0">
           <img
             alt="Vehicle parts"
@@ -149,4 +169,6 @@ export default function Login() {
       </div>
     </section>
   );
-}
+};
+
+export default Login;
