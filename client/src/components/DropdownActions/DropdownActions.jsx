@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { BsPersonAdd } from 'react-icons/bs';
-import { BiEditAlt, BiXCircle } from 'react-icons/bi';
-import { BsFillTrashFill } from 'react-icons/bs';
-import { AiFillSetting } from 'react-icons/ai';
+import React, { useState } from "react";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+import { BsPersonAdd } from "react-icons/bs";
+import { BiEditAlt, BiXCircle } from "react-icons/bi";
+import { BsFillTrashFill } from "react-icons/bs";
+import { AiFillSetting } from "react-icons/ai";
 
-const DropdownActions = ({ toggleModal, toggleModalUpdate, selectedRow, deleteFournisseur }) => {
+const DropdownActions = ({ actions, callbacks, selectedRow, icons }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -16,19 +21,16 @@ const DropdownActions = ({ toggleModal, toggleModalUpdate, selectedRow, deleteFo
           <AiFillSetting /> Action
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem onClick={toggleModal}>
-            <BsPersonAdd /> Nouveau fournisseur
-          </DropdownItem>
-          <DropdownItem disabled={selectedRow ? false : true} onClick={toggleModalUpdate}>
-            <BiEditAlt /> Mettre à jour
-          </DropdownItem>
-          <DropdownItem
-            disabled={selectedRow ? false : true}
-            className={selectedRow ? `text-danger` : 'text-muted'}
-            onClick={(e) => deleteFournisseur(selectedRow.ID_Fournisseur)}
-          >
-            <BsFillTrashFill /> Supprimer
-          </DropdownItem>
+          {actions.map((action, index) => (
+            <DropdownItem
+              key={index}
+              disabled={action.disabled && !selectedRow}
+              className={action.dangerous && selectedRow ? "text-danger" : ""}
+              onClick={callbacks[index]}
+            >
+              {icons[index]} {action.label}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
     </div>

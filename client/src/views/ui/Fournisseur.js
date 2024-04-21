@@ -1,3 +1,4 @@
+import { HiOutlineTrash } from "react-icons/hi";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useToast } from "../../hooks/Toast/useToast";
@@ -10,6 +11,8 @@ import DropdownActions from "../../components/DropdownActions/DropdownActions";
 import ModalFournisseur from "../../components/ModalForm/ModalFournisseur";
 import "react-toastify/dist/ReactToastify.css";
 import { useSweetAlert } from "../../hooks/SweetAlert/useSweetAlert";
+import { BsPersonAdd } from "react-icons/bs";
+import { BiEditAlt } from "react-icons/bi";
 
 const Fournisseur = () => {
   const { notify, alertError } = useToast();
@@ -186,10 +189,18 @@ const Fournisseur = () => {
       <p className="text-center">{error && <div>{error.message}</div>}</p>
       <div className="d-flex justify-content-between align-items-center mb-3">
         <DropdownActions
-          toggleModal={toggleModal}
-          toggleModalUpdate={toggleModalUpdate}
           selectedRow={selectedRow}
-          deleteFournisseur={deleteFournisseur}
+          actions={[
+            { label: "Nouveau fournisseur", disabled: false, dangerous: false },
+            { label: "Mettre à jour", disabled: true, dangerous: false },
+            { label: "Supprimer", disabled: true, dangerous: true },
+          ]}
+          icons={[<BsPersonAdd />, <BiEditAlt />, <HiOutlineTrash />]}
+          callbacks={[
+            toggleModal,
+            toggleModalUpdate,
+            () => deleteFournisseur(selectedRow.ID_Fournisseur),
+          ]}
         />
         <SearchInput
           searchString={searchString}
