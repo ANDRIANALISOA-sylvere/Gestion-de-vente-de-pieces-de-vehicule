@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
 // Importations des icônes
 import { HiOutlineTrash } from "react-icons/hi";
@@ -14,6 +15,7 @@ import TableFournisseur from "../../components/TableFournisseur";
 import Loader from "../../layouts/loader/Loader";
 import DropdownActions from "../../components/DropdownActions/DropdownActions";
 import ModalFournisseur from "../../components/ModalForm/ModalFournisseur";
+import PaginatedTable from "../../components/Pagination/Pagination";
 
 // Importations des hooks personnalisés
 import { useToast } from "../../hooks/Toast/useToast";
@@ -33,6 +35,7 @@ const Fournisseur = () => {
   const toggleModal = () => setModal(!modal);
   const toggleModalUpdate = () => setModalUpdate(!modalupdate);
   const { showConfirmationAlert } = useSweetAlert();
+  const itemsPerPage = 9;
   const [add, setAdd] = useState({
     ID_Fournisseur: "",
     Nom: "",
@@ -68,6 +71,14 @@ const Fournisseur = () => {
           )
       )
     : data;
+
+  const {
+    currentItems,
+    renderPageNumbers,
+    handlePageChange,
+    currentPage,
+    totalPages,
+  } = PaginatedTable({ data: filteredLibraries, itemsPerPage });
 
   // Mise à jour des données lorsqu'elles sont récupérées
   useEffect(() => {
@@ -215,11 +226,24 @@ const Fournisseur = () => {
       {data.length !== 0 && (
         <div>
           <TableFournisseur
-            filteredLibraries={filteredLibraries}
+            filteredLibraries={currentItems}
             onRowSelect={onRowSelect}
             onRowDeselect={onRowDeselect}
             selectedRow={selectedRow}
           ></TableFournisseur>
+          <Pagination style={{ float: "right" }}>
+            <PaginationItem disabled={currentPage === 1}>
+              <PaginationLink onClick={() => handlePageChange(currentPage - 1)}>
+                Précédent
+              </PaginationLink>
+            </PaginationItem>
+            {renderPageNumbers()}
+            <PaginationItem disabled={currentPage === totalPages}>
+              <PaginationLink onClick={() => handlePageChange(currentPage + 1)}>
+                Suivant
+              </PaginationLink>
+            </PaginationItem>
+          </Pagination>
         </div>
       )}
 
