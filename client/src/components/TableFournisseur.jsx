@@ -1,53 +1,28 @@
-import React from "react";
-import { Table } from "reactstrap";
-import "../assets/css/table.css";
+// components/TableFournisseur.js
+import React from 'react';
+import { Table } from 'reactstrap';
+import '../assets/css/table.css';
+import TableHead from './Table/TableHead';
+import TableBody from './Table/TableBody';
 
-function TableFournisseur({ filteredLibraries, onRowSelect, onRowDeselect, selectedRow }) {
+const TableFournisseur = ({ filteredLibraries, onRowSelect, onRowDeselect, selectedRow }) => {
+  const columns = ['ID_Fournisseur', 'Nom', 'Adresse', 'Tel'];
+  const col =['Identifiant', 'Nom', 'Adresse', 'N° Téléphone']
+
   return (
     <div className="mb-5">
       <Table striped borderless hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Identifiant</th>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>N° Téléphone</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredLibraries.map((fournisseur) => {
-            return (
-              <tr key={fournisseur.ID_Fournisseur}>
-                <td>
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    name="fournisseur-select"
-                    checked={
-                      fournisseur.ID_Fournisseur ===
-                      (selectedRow?.ID_Fournisseur || "")
-                    }
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                        onRowSelect(fournisseur);
-                      } else {
-                        onRowDeselect();
-                      }
-                    }}
-                  />
-                </td>
-                <td>{fournisseur.ID_Fournisseur}</td>
-                <td>{fournisseur.Nom}</td>
-                <td>{fournisseur.Adresse}</td>
-                <td>{fournisseur.Tel}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <TableHead columns={col} />
+        <TableBody
+          data={filteredLibraries}
+          columns={columns}
+          onRowSelect={onRowSelect}
+          onRowDeselect={onRowDeselect}
+          selectedRow={selectedRow}
+        />
       </Table>
     </div>
   );
-}
+};
 
 export default TableFournisseur;
