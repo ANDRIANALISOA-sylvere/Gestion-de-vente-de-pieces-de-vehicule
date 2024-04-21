@@ -35,10 +35,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Fournisseur = ({ direction, ...args }) => {
   const [data, setData] = useState([]);
-  const [identifiantError, setIdentifiantError] = useState("");
-  const [nomError, setNomError] = useState("");
-  const [adressError, setAdresseError] = useState("");
-  const [telError, setTelError] = useState("");
   const [add, setAdd] = useState({
     ID_Fournisseur: "",
     Nom: "",
@@ -90,47 +86,20 @@ const Fournisseur = ({ direction, ...args }) => {
     }
   };
   const postFournisseur = async () => {
-    let identifiantErreur = "";
-    let nomErreur = "";
-    let adresseErreur = "";
-    let telErreur = "";
-
-    if (!add.ID_Fournisseur) {
-      identifiantErreur = "Identifiant requis";
-    }
-
-    if (!add.Nom) {
-      nomErreur = "Nom requis";
-    }
-
-    if (!add.Adresse) {
-      adresseErreur = "Adresse requis";
-    }
-
-    if (!add.Tel) {
-      telErreur = "Numéro téléphone requis";
-    }
-
-    if (identifiantErreur || nomErreur || adresseErreur || telErreur) {
-      setIdentifiantError(identifiantErreur);
-      setNomError(nomErreur);
-      setAdresseError(adresseErreur);
-      setTelError(telErreur);
+    if (!add.ID_Fournisseur || !add.Nom || !add.Adresse || !add.Tel) {
+      alertError("Tous les champs sont obligatoires");
     } else {
       try {
         const res = await axios.post("http://localhost:5000/fournisseur/", add);
         setData([...data, add]);
         notify("Ajout avec succès");
-        setIdentifiantError("");
-        setNomError("");
-        setAdresseError("");
-        setTelError("");
         setAdd({
           ID_Fournisseur: "",
           Nom: "",
           Adresse: "",
           Tel: "",
         });
+        toggleModal();
       } catch (error) {
         alertError(error.message);
       }
@@ -140,6 +109,7 @@ const Fournisseur = ({ direction, ...args }) => {
     e.preventDefault();
     postFournisseur();
   };
+
   return (
     <div>
       <ToastContainer autoClose={3000} />
@@ -201,9 +171,7 @@ const Fournisseur = ({ direction, ...args }) => {
                   <Label for="identifiant">Identifiant</Label>
                   <Input
                     type="text"
-                    className={`form-control ${
-                      identifiantError ? "is-invalid input-error" : ""
-                    }`}
+                    className="form-control"
                     id="identifiant"
                     name="identifiant"
                     value={add.ID_Fournisseur}
@@ -214,9 +182,6 @@ const Fournisseur = ({ direction, ...args }) => {
                       });
                     }}
                   ></Input>
-                  {identifiantError && (
-                    <FormFeedback>{identifiantError}</FormFeedback>
-                  )}
                 </FormGroup>
               </Col>
               <Col>
@@ -224,9 +189,7 @@ const Fournisseur = ({ direction, ...args }) => {
                   <Label for="nom">Nom</Label>
                   <Input
                     type="text"
-                    className={`form-control ${
-                      nomError ? "is-invalid input-error" : ""
-                    }`}
+                    className="form-control"
                     id="nom"
                     name="nom"
                     value={add.Nom}
@@ -237,7 +200,6 @@ const Fournisseur = ({ direction, ...args }) => {
                       });
                     }}
                   ></Input>
-                  {nomError && <FormFeedback>{nomError}</FormFeedback>}
                 </FormGroup>
               </Col>
             </Row>
@@ -247,9 +209,7 @@ const Fournisseur = ({ direction, ...args }) => {
                   <Label for="adresse">Adresse</Label>
                   <Input
                     type="text"
-                    className={`form-control ${
-                      adressError ? "is-invalid input-error" : ""
-                    }`}
+                    className="form-control"
                     id="adresse"
                     name="adresse"
                     value={add.Adresse}
@@ -260,7 +220,6 @@ const Fournisseur = ({ direction, ...args }) => {
                       });
                     }}
                   ></Input>
-                  {adressError && <FormFeedback>{adressError}</FormFeedback>}
                 </FormGroup>
               </Col>
               <Col>
@@ -268,9 +227,7 @@ const Fournisseur = ({ direction, ...args }) => {
                   <Label for="tel">N° Téléphone</Label>
                   <Input
                     type="tel"
-                    className={`form-control ${
-                      telError ? "is-invalid input-error" : ""
-                    }`}
+                    className="form-control"
                     id="tel"
                     name="tel"
                     value={add.Tel}
@@ -281,7 +238,6 @@ const Fournisseur = ({ direction, ...args }) => {
                       });
                     }}
                   ></Input>
-                  {telError && <FormFeedback>{telError}</FormFeedback>}
                 </FormGroup>
               </Col>
             </Row>
@@ -293,11 +249,6 @@ const Fournisseur = ({ direction, ...args }) => {
             <Button
               color="primary"
               type="submit"
-              onClick={
-                identifiantError || nomError || adressError || telError === ""
-                  ? ""
-                  : toggleModal
-              }
             >
               <BsPersonAdd /> Sauvergder
             </Button>
