@@ -1,33 +1,25 @@
 import React from "react";
+import { Table } from "reactstrap";
+import "../assets/css/table.css";
 
-function TableFournisseur({ data, onRowSelect, onRowDeselect, selectedRow }) {
+function TableFournisseur({ filteredLibraries, onRowSelect, onRowDeselect, selectedRow }) {
   return (
-    <div className="mydiv mb-5">
-      <table className="mytable">
-        <thead className="thead">
+    <div className="mb-5">
+      <Table striped borderless hover>
+        <thead>
           <tr>
-            <th scope="col" className="th">
-              #
-            </th>
-            <th scope="col" className="th">
-              Identifiant
-            </th>
-            <th scope="col" className="th">
-              Nom
-            </th>
-            <th scope="col" className="th">
-              Adresse
-            </th>
-            <th scope="col" className="th">
-              N° Téléphone
-            </th>
+            <th>#</th>
+            <th>Identifiant</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>N° Téléphone</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((fournisseur) => {
+          {filteredLibraries.map((fournisseur) => {
             return (
-              <tr className="tr" key={fournisseur.ID_Fournisseur}>
-                <td className="td">
+              <tr key={fournisseur.ID_Fournisseur}>
+                <td>
                   <input
                     type="checkbox"
                     className="form-check-input"
@@ -45,15 +37,15 @@ function TableFournisseur({ data, onRowSelect, onRowDeselect, selectedRow }) {
                     }}
                   />
                 </td>
-                <td className="td">{fournisseur.ID_Fournisseur}</td>
-                <td className="td">{fournisseur.Nom}</td>
-                <td className="td">{fournisseur.Adresse}</td>
-                <td className="td">{fournisseur.Tel}</td>
+                <td>{fournisseur.ID_Fournisseur}</td>
+                <td>{fournisseur.Nom}</td>
+                <td>{fournisseur.Adresse}</td>
+                <td>{fournisseur.Tel}</td>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }

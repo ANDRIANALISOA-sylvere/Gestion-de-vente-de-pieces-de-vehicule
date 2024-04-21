@@ -1,0 +1,22 @@
+.mydiv {
+  overflow-x: auto;
+  position: relative;
+}
+
+thead th {
+  border-bottom: none;
+  background-color: var(--bs-primary) !important;
+  color: white !important;
+}
+
+th {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+th,
+td {
+  border-bottom: 1px solid #f7f7f7;
+}

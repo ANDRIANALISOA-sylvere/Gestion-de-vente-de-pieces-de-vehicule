@@ -1,4 +1,3 @@
-import { AiFillEye } from "react-icons/ai";
 import { BsPersonAdd } from "react-icons/bs";
 import { BiEditAlt, BiXCircle } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -12,9 +11,6 @@ import {
   Button,
   Row,
   Col,
-  Card,
-  CardHeader,
-  CardBody,
   Form,
   FormGroup,
   Label,
@@ -41,17 +37,44 @@ const Fournisseur = ({ direction, ...args }) => {
     Adresse: "",
     Tel: "",
   });
+  const [update, setUpdate] = useState({
+    ID_Fournisseur: "",
+    Nom: "",
+    Adresse: "",
+    Tel: "",
+  });
   const [modal, setModal] = useState(false);
+  const [modalupdate, setModalUpdate] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [searchString, setSearchString] = useState("");
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const { donne, loading, error } = useFecth(
     "http://localhost:5000/fournisseur/"
   );
+  const handleChange = (e) => {
+    setSearchString(e.target.value);
+  };
+
+  const filteredLibraries = searchString.trim().toLowerCase()
+    ? data.filter(
+        (i) =>
+          i.Nom.toLowerCase().includes(searchString.trim().toLowerCase()) ||
+          i.Adresse.toLowerCase().includes(searchString.trim().toLowerCase()) || 
+          i.ID_Fournisseur.toLowerCase().includes(searchString.trim().toLowerCase())
+      )
+    : data;
+
   const toggleModal = () => setModal(!modal);
+  const toggleModalUpdate = () => setModalUpdate(!modalupdate);
   useEffect(() => {
     setData(donne);
   }, [donne]);
+
+  useEffect(() => {
+    setUpdate(selectedRow);
+  }, [selectedRow]);
+
   const onRowSelect = (row) => {
     setSelectedRow(row);
   };
@@ -105,11 +128,42 @@ const Fournisseur = ({ direction, ...args }) => {
       }
     }
   };
+  const updateFournisseur = async () => {
+    if (
+      !update.ID_Fournisseur ||
+      !update.Nom ||
+      !update.Adresse ||
+      !update.Tel
+    ) {
+      alertError("Tous les champs sont obligatoires");
+    } else {
+      try {
+        const res = await axios.put(
+          "http://localhost:5000/fournisseur/" + selectedRow.ID_Fournisseur,
+          update
+        );
+        const newFournisseur = [...data];
+        const FournisseurIndex = data.findIndex((fournisseur) => {
+          return fournisseur.ID_Fournisseur === selectedRow.ID_Fournisseur;
+        });
+        newFournisseur[FournisseurIndex] = update;
+        setData(newFournisseur);
+        notify("Modification avec succès");
+        toggleModalUpdate();
+        setSelectedRow(null);
+      } catch (error) {
+        alertError(error.message);
+      }
+    }
+  };
   const handleSubmitFournisseur = (e) => {
     e.preventDefault();
     postFournisseur();
   };
-
+  const handleSubmitFournisseurUpdating = (e) => {
+    e.preventDefault();
+    updateFournisseur();
+  };
   return (
     <div>
       <ToastContainer autoClose={3000} />
@@ -125,11 +179,11 @@ const Fournisseur = ({ direction, ...args }) => {
               <DropdownItem onClick={toggleModal}>
                 <BsPersonAdd /> Nouveau fournisseur
               </DropdownItem>
-              <DropdownItem disabled={selectedRow ? false : true}>
-                <AiFillEye /> Voir en détails
-              </DropdownItem>
-              <DropdownItem disabled={selectedRow ? false : true}>
-                <BiEditAlt /> Modifier
+              <DropdownItem
+                disabled={selectedRow ? false : true}
+                onClick={toggleModalUpdate}
+              >
+                <BiEditAlt /> Mettre à jour
               </DropdownItem>
               <DropdownItem
                 disabled={selectedRow ? false : true}
@@ -147,6 +201,8 @@ const Fournisseur = ({ direction, ...args }) => {
               type="search"
               className="form-control"
               placeholder="Chercher un fournisseur ..."
+              value={searchString}
+              onChange={handleChange}
             />
           </form>
         </div>
@@ -154,7 +210,7 @@ const Fournisseur = ({ direction, ...args }) => {
       {data.length !== 0 && (
         <div>
           <TableFournisseur
-            data={data}
+            filteredLibraries={filteredLibraries}
             onRowSelect={onRowSelect}
             onRowDeselect={onRowDeselect}
             selectedRow={selectedRow}
@@ -246,15 +302,107 @@ const Fournisseur = ({ direction, ...args }) => {
             <Button color="danger" onClick={toggleModal}>
               <BiXCircle /> Fermer
             </Button>
-            <Button
-              color="primary"
-              type="submit"
-            >
+            <Button color="primary" type="submit">
               <BsPersonAdd /> Sauvergder
             </Button>
           </ModalFooter>
         </Form>
       </Modal>
+      {update && (
+        <Modal isOpen={modalupdate} toggle={toggleModalUpdate} {...args}>
+          <ModalHeader toggle={toggleModalUpdate}>
+            Mise à jour Fournisseur
+          </ModalHeader>
+          <Form onSubmit={handleSubmitFournisseurUpdating}>
+            <ModalBody className="bg-white">
+              <Row>
+                <Col>
+                  <FormGroup>
+                    <Label for="identifiantupdate">Identifiant</Label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      id="identifiantupdate"
+                      name="identifiantupdate"
+                      value={update.ID_Fournisseur}
+                      onChange={(e) => {
+                        setUpdate({
+                          ...update,
+                          ID_Fournisseur: e.target.value,
+                        });
+                      }}
+                    ></Input>
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <FormGroup>
+                    <Label for="nomupdate">Nom</Label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      id="nomupdate"
+                      name="nomupdate"
+                      value={update.Nom}
+                      onChange={(e) => {
+                        setUpdate({
+                          ...update,
+                          Nom: e.target.value,
+                        });
+                      }}
+                    ></Input>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <FormGroup>
+                    <Label for="adresseupdate">Adresse</Label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      id="adresseupdate"
+                      name="adresseupdate"
+                      value={update.Adresse}
+                      onChange={(e) => {
+                        setUpdate({
+                          ...update,
+                          Adresse: e.target.value,
+                        });
+                      }}
+                    ></Input>
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <FormGroup>
+                    <Label for="telupdate">N° Téléphone</Label>
+                    <Input
+                      type="tel"
+                      className="form-control"
+                      id="telupdate"
+                      name="telupdate"
+                      value={update.Tel}
+                      onChange={(e) => {
+                        setUpdate({
+                          ...update,
+                          Tel: e.target.value,
+                        });
+                      }}
+                    ></Input>
+                  </FormGroup>
+                </Col>
+              </Row>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" onClick={toggleModalUpdate}>
+                <BiXCircle /> Fermer
+              </Button>
+              <Button color="primary" type="submit">
+                <BsPersonAdd /> Sauvergder
+              </Button>
+            </ModalFooter>
+          </Form>
+        </Modal>
+      )}
     </div>
   );
 };
