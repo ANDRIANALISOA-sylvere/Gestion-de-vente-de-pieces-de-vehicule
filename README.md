@@ -6,6 +6,7 @@
 Il faut installer d'abord create-react-app et nodejs sur votre ordinateur
 
 Lien d'installation de create-react-app : https://www.freecodecamp.org/news/install-react-with-create-react-app/
+Lien de téléchargement de nodejs : https://nodejs.org/en/
 
 ## cloner le projet :
 
