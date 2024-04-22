@@ -16,7 +16,7 @@ import { ReactComponent as LogoWhite } from "../assets/images/logos/adminprowhit
 import user1 from "../assets/images/users/user-1.jpg";
 
 // Composant Header
-const Header = () => {
+const Header = ({user}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
@@ -85,12 +85,7 @@ const Header = () => {
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">
-            <img
-              src={user1}
-              alt="profile"
-              className="rounded-circle border-0 shadow-none"
-              width="30"
-            ></img>
+            {user.email}
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Info</DropdownItem>
