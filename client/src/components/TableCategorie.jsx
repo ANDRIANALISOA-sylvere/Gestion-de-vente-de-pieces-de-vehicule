@@ -5,18 +5,18 @@ import "../assets/css/table.css";
 import TableHead from "./Table/TableHead";
 import TableBody from "./Table/TableBody";
 
-// Composant TableClient
-const TableClient = ({
+// Composant TableCategorie
+const TableCategorie = ({
   filteredLibraries,
   onRowSelect,
   onRowDeselect,
   selectedRow,
 }) => {
   // Tableau des noms de colonnes pour les données
-  const columns = ["ID_Client", "Nom", "adresse", "Tel", "email"];
+  const columns = ["ID_Categorie", "Nom"];
 
   // Tableau des noms de colonnes à afficher
-  const col = ["Identifiant", "Nom", "Adresse", "N° Téléphone", "Adresse mail"];
+  const col = ["Identifiant", "Nom"];
 
   return (
     <div className="mb-2">
@@ -40,4 +40,4 @@ const TableClient = ({
   );
 };
 
-export default TableClient;
+export default TableCategorie;
