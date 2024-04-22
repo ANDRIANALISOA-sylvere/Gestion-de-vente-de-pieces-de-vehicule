@@ -53,11 +53,6 @@ class UtilisateurController {
       } else if (!utilisateur) {
         res.status(401).json({ message });
       } else {
-        console.log(utilisateur.exp);
-        res.cookie("auth", utilisateur.token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-        });
         res.json({token : utilisateur.token});
       }
     });

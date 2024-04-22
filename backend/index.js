@@ -14,13 +14,11 @@ const EntreeRoute = require('./Routes/EntreeStockRoute')
 const SortieRoute = require('./Routes/SortieRoute')
 const CommandeRoute = require('./Routes/CommandesRoute')
 const UtilisateurRoute = require("./Routes/UtilisateurRoute");
-const cookieParser = require("cookie-parser");
 const AuthMiddleware = require("./middleware/utilisateurMiddleware");
 const checkAuth = require("./Controllers/checkAuth");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(CategorieRoute);
 app.use(MarqueRoute);
 app.use(UtilisateurRoute);
