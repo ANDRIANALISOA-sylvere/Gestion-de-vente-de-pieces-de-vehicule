@@ -4,14 +4,14 @@ const UtilisateurModel = require("../Models/UtilisateurModel");
 class AuthMiddleware {
   static Auth(req, res, next) {
     try {
-      // Récupérer le token depuis les cookies
-      const token = req.cookies.auth;
+      const token = req.headers['authorization'].split(" ")[1];
+      console.log(token)
 
       // Vérifier si le token est présent
       if (!token) {
         return res
           .status(401)
-          .json({ message: "Aucun token d'authentification fourni" });
+          .json({ message: "Accès refusé" });
       }
 
       // Vérifier la validité du token
