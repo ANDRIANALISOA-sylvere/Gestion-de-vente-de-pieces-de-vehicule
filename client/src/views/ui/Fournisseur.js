@@ -24,7 +24,7 @@ import { useFecth } from "../../hooks/Fetch/useFetch";
 import { useSweetAlert } from "../../hooks/SweetAlert/useSweetAlert";
 
 const Fournisseur = () => {
-  // Utilisation des hooks
+  // Utilisation des hooks et variable
   const { notify, alertError } = useToast();
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
@@ -72,6 +72,7 @@ const Fournisseur = () => {
       )
     : data;
 
+  // Appel de la fonction sur la pagination
   const {
     currentItems,
     renderPageNumbers,

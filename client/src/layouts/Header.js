@@ -1,7 +1,6 @@
 import { BiLogOut } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   Navbar,
   Collapse,
@@ -16,20 +15,27 @@ import {
 import { ReactComponent as LogoWhite } from "../assets/images/logos/adminprowhite.svg";
 import user1 from "../assets/images/users/user-1.jpg";
 
+// Composant Header
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
+  // Fonction pour basculer l'état du menu déroulant
   const toggle = () => setDropdownOpen((prevState) => !prevState);
+
+  // Fonction pour basculer l'état du menu de navigation
   const Handletoggle = () => {
     setIsOpen(!isOpen);
   };
+
+  // Fonction pour afficher/masquer le menu latéral
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
 
   const navigate = useNavigate();
+
+  // Fonction pour gérer la déconnexion
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
@@ -68,13 +74,13 @@ const Header = () => {
           )}
         </Button>
       </div>
-
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
           <span
             style={{ color: "#78909C", fontWeight: "400", fontSize: "20px" }}
           >
-            Tableau de bord
+            {" "}
+            Tableau de bord{" "}
           </span>
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">

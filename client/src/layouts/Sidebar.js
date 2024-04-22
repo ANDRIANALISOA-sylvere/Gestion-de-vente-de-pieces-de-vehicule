@@ -1,15 +1,5 @@
 import { CgEditBlackPoint } from "react-icons/cg";
 import { BiSearchAlt } from "react-icons/bi";
-import { MdManageAccounts } from "react-icons/md";
-import { AiFillIdcard } from "react-icons/ai";
-import { BsFillCartFill } from "react-icons/bs";
-import { AiFillDatabase } from "react-icons/ai";
-import { CgShare } from "react-icons/cg";
-import { AiFillFileMarkdown } from "react-icons/ai";
-import { BsFillGridFill } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
-import { FaTachometerAlt } from "react-icons/fa";
-import { HiHome } from "react-icons/hi";
 import { Button, Input, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
