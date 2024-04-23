@@ -19,6 +19,7 @@ const Commande = lazy(() => import("../views/ui/Commande.js"));
 const Employe = lazy(() => import("../views/ui/Employe.js"));
 const Login = lazy(() => import("../views/Login.jsx"));
 
+
 /*****Routes******/
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem("token");
