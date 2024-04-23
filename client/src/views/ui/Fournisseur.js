@@ -218,11 +218,13 @@ const Fournisseur = () => {
             () => deleteFournisseur(selectedRow.ID_Fournisseur),
           ]}
         />
-        <SearchInput
-          searchString={searchString}
-          placeholder="Chercher un fournisseur ..."
-          onSearchChange={handleSearchChange}
-        />
+        {data.length !== 0 && (
+          <SearchInput
+            searchString={searchString}
+            placeholder="Chercher un fournisseur ..."
+            onSearchChange={handleSearchChange}
+          />
+        )}
       </div>
       {data.length !== 0 && (
         <div>

@@ -218,11 +218,13 @@ const Client = () => {
             () => deleteClient(selectedRow.ID_Client),
           ]}
         />
-        <SearchInput
-          searchString={searchString}
-          placeholder="Chercher un client ..."
-          onSearchChange={handleSearchChange}
-        />
+        {data.length !== 0 && (
+          <SearchInput
+            searchString={searchString}
+            placeholder="Chercher un client ..."
+            onSearchChange={handleSearchChange}
+          />
+        )}
       </div>
       {data.length !== 0 && (
         <div>

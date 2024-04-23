@@ -1,11 +1,31 @@
 // Importation des dépendances nécessaires
-import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
-import { BiXCircle } from 'react-icons/bi';
-import { BsPersonAdd } from 'react-icons/bs';
+import React from "react";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
+import { BiXCircle } from "react-icons/bi";
+import { BsPersonAdd } from "react-icons/bs";
 
 // Composant ModalFournisseur
-const ModalFournisseur = ({ modal, toggleModal, fields, formData, setFormData, handleSubmit, title }) => {
+const ModalFournisseur = ({
+  modal,
+  toggleModal,
+  fields,
+  formData,
+  setFormData,
+  handleSubmit,
+  title,
+}) => {
   // Fonction de gestion des changements des champs de formulaire
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +41,7 @@ const ModalFournisseur = ({ modal, toggleModal, fields, formData, setFormData, h
         <Col key={field.name}>
           <FormGroup>
             <Label htmlFor={field.name}>{field.label}</Label>
-            {field.type === 'select' ? (
+            {field.type === "select" ? (
               // Rendu d'un champ de type select
               <Input
                 type="select"
@@ -33,8 +53,8 @@ const ModalFournisseur = ({ modal, toggleModal, fields, formData, setFormData, h
               >
                 <option value="">Sélectionnez une option</option>
                 {field.options &&
-                  field.options.map((option) => (
-                    <option key={option.value} value={option.value}>
+                  field.options.map((option,index) => (
+                    <option key={index} value={option.value}>
                       {option.label}
                     </option>
                   ))}

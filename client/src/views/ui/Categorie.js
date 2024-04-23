@@ -202,11 +202,13 @@ const Categorie = () => {
             () => deleteCategorie(selectedRow.ID_Categorie),
           ]}
         />
-        <SearchInput
-          searchString={searchString}
-          placeholder="Chercher une categorie ..."
-          onSearchChange={handleSearchChange}
-        />
+        {data.length !== 0 && (
+          <SearchInput
+            searchString={searchString}
+            placeholder="Chercher une categorie ..."
+            onSearchChange={handleSearchChange}
+          />
+        )}
       </div>
       {data.length !== 0 && (
         <div>

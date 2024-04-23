@@ -198,11 +198,13 @@ const Categorie = () => {
             () => deleteMarque(selectedRow.ID_Marque),
           ]}
         />
-        <SearchInput
-          searchString={searchString}
-          placeholder="Chercher une marque ..."
-          onSearchChange={handleSearchChange}
-        />
+        {data.length !== 0 && (
+          <SearchInput
+            searchString={searchString}
+            placeholder="Chercher une marque ..."
+            onSearchChange={handleSearchChange}
+          />
+        )}
       </div>
       {data.length !== 0 && (
         <div>

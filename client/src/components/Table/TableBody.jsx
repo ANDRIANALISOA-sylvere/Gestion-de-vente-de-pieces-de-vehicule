@@ -1,5 +1,6 @@
 // Importation des dépendances nécessaires
 import React from "react";
+import { truncateString } from "../../utils/helper";
 
 // Composant TableBody
 const TableBody = ({
@@ -8,10 +9,19 @@ const TableBody = ({
   onRowSelect,
   onRowDeselect,
   selectedRow,
+  tableName,
 }) => {
   // Fonction pour générer une clé unique pour chaque ligne
   const getRowKey = (item) => {
     return item[columns[0]];
+  };
+
+  // Fonction pour tronquer la valeur de la colonne "Nom" pour la table "pieces"
+  const renderCellValue = (column, value) => {
+    if (tableName === "pieces" && column === "Nom") {
+      return truncateString(value, 10);
+    }
+    return value;
   };
 
   return (
@@ -20,7 +30,7 @@ const TableBody = ({
       {data.map((item) => (
         <tr key={getRowKey(item)}>
           {/* Colonne pour la case à cocher */}
-          <td>
+          <td className="text-center">
             <input
               type="checkbox"
               className="form-check-input"
@@ -38,10 +48,11 @@ const TableBody = ({
               }}
             />
           </td>
-
           {/* Colonnes pour les données */}
           {columns.map((column) => (
-            <td key={`${getRowKey(item)}-${column}`}>{item[column]}</td>
+            <td key={`${getRowKey(item)}-${column}`} className="text-center">
+              {renderCellValue(column, item[column])}
+            </td>
           ))}
         </tr>
       ))}
