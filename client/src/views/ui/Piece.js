@@ -134,7 +134,6 @@ const Piece = () => {
         fournisseur.find(
           (fournisseur) => fournisseur.ID_Fournisseur === item.ID_Fournisseur
         )?.Nom || "";
-      console.log(marqueName);
       return {
         ...item,
         ID_Categorie: categorieName,
@@ -313,6 +312,8 @@ const Piece = () => {
     updatePiece();
   };
 
+  console.log(selectedRow);
+
   return (
     <div>
       <ToastContainer autoClose={3000} />
@@ -348,6 +349,8 @@ const Piece = () => {
             onRowSelect={onRowSelect}
             onRowDeselect={onRowDeselect}
             selectedRow={selectedRow}
+            donnepur={data}
+            status={"piece"}
           ></TablePiece>
           <Pagination style={{ float: "right" }}>
             <PaginationItem disabled={currentPage === 1}>

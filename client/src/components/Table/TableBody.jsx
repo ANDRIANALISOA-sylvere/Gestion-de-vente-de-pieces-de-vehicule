@@ -10,6 +10,8 @@ const TableBody = ({
   onRowDeselect,
   selectedRow,
   tableName,
+  donnepur,
+  status,
 }) => {
   // Fonction pour générer une clé unique pour chaque ligne
   const getRowKey = (item) => {
@@ -18,11 +20,16 @@ const TableBody = ({
 
   // Fonction pour tronquer la valeur de la colonne "Nom" pour la table "pieces"
   const renderCellValue = (column, value) => {
-    if (tableName === "pieces" && column === "Nom") {
-      return truncateString(value, 10);
+    if (tableName === "pieces" && column === "ID_Categorie") {
+      return truncateString(value, 13);
+    }
+    if (tableName === "pieces" && column === "ID_Fournisseur") {
+      return truncateString(value, 13);
     }
     return value;
   };
+
+  console.log(status);
 
   return (
     <tbody>
@@ -40,7 +47,12 @@ const TableBody = ({
               onChange={(event) => {
                 if (event.target.checked) {
                   // Si la case est cochée, appeler la fonction onRowSelect
-                  onRowSelect(item);
+                  const selectedItem = status
+                    ? donnepur.find((donne) => donne.ID_Piece === item.ID_Piece)
+                    : item;
+                  if (selectedItem) {
+                    onRowSelect(selectedItem);
+                  }
                 } else {
                   // Sinon, appeler la fonction onRowDeselect
                   onRowDeselect();

@@ -11,6 +11,8 @@ const TablePiece = ({
   onRowSelect,
   onRowDeselect,
   selectedRow,
+  donnepur,
+  status
 }) => {
   // Tableau des noms de colonnes pour les données
   const columns = [
@@ -52,6 +54,8 @@ const TablePiece = ({
             onRowDeselect={onRowDeselect}
             selectedRow={selectedRow}
             tableName="pieces"
+            donnepur={donnepur}
+            status={status}
           />
         )}
       </Table>
