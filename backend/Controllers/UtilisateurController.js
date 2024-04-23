@@ -53,7 +53,7 @@ class UtilisateurController {
       } else if (!utilisateur) {
         res.status(401).json({ message });
       } else {
-        res.json({token : utilisateur.token});
+        res.json({token : utilisateur.token , user : utilisateur.user});
       }
     });
   }

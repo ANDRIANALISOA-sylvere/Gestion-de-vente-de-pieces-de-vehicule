@@ -1,5 +1,5 @@
 import { BiLogOut } from "react-icons/bi";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Navbar,
@@ -14,11 +14,19 @@ import {
 } from "reactstrap";
 import { ReactComponent as LogoWhite } from "../assets/images/logos/adminprowhite.svg";
 import user1 from "../assets/images/users/user-1.jpg";
+import { UserContext } from "../context/checkauth";
 
 // Composant Header
-const Header = ({user}) => {
+const Header = () => {
+  const { user } = useContext(UserContext);
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [localUser, setLocalUser] = useState("");
+
+  useEffect(() => {
+    const utilisateur = localStorage.getItem("user");
+    setLocalUser(JSON.parse(utilisateur));
+  }, []);
 
   // Fonction pour basculer l'état du menu déroulant
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -37,7 +45,7 @@ const Header = ({user}) => {
 
   // Fonction pour gérer la déconnexion
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     navigate("/");
   };
 
@@ -85,7 +93,7 @@ const Header = ({user}) => {
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">
-            {user.email}
+          {localUser.email}
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Info</DropdownItem>

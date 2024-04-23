@@ -3,9 +3,10 @@ import { BiSearchAlt } from "react-icons/bi";
 import { Button, Input, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { TbBrandAlgolia } from "react-icons/tb";
+import { UserContext } from "../context/checkauth";
 
 const navigation = [
   {
@@ -362,7 +363,14 @@ const navigation = [
 ];
 
 const Sidebar = () => {
+  const { user } = useContext(UserContext);
   const [showStockSubMenu, setShowStockSubMenu] = useState(false);
+  const [localUser, setLocalUser] = useState("");
+
+  useEffect(() => {
+    const utilisateur = localStorage.getItem("user");
+    setLocalUser(JSON.parse(utilisateur));
+  }, []);
   const toggleStockSubMenu = (navi) => {
     if (navi.title === "Stocks") {
       setShowStockSubMenu(!showStockSubMenu);
@@ -415,31 +423,61 @@ const Sidebar = () => {
           <Nav vertical className="sidebarNav mt-2">
             {navigation.map((navi, index) => (
               <NavItem key={index} className="sidenav-bg mt-2">
-                <Link
-                  to={navi.href}
-                  className={
-                    location.pathname === navi.href
-                      ? "active nav-link py-2"
-                      : "nav-link py-2"
-                  }
-                  onClick={() => toggleStockSubMenu(navi)}
-                >
-                  <div className="icon-container">
-                    <span>
-                      <i>{navi.icon}</i>
-                      <span className="ms-3 d-inline-block">{navi.title}</span>
-                    </span>
-                    {navi.title === "Stocks" && (
-                      <i
-                        className={`rotate-icon ${
-                          showStockSubMenu ? "open" : ""
-                        }`}
-                      >
-                        {showStockSubMenu ? <FaChevronUp /> : <FaChevronDown />}
-                      </i>
-                    )}
-                  </div>
-                </Link>
+                {navi.title === "Employes" ? (
+                  localUser.role === "Administrateur" ? (
+                    <Link
+                      to={navi.href}
+                      className={
+                        location.pathname === navi.href
+                          ? "active nav-link py-2"
+                          : "nav-link py-2"
+                      }
+                      onClick={() => toggleStockSubMenu(navi)}
+                    >
+                      <div className="icon-container">
+                        <span>
+                          <i>{navi.icon}</i>
+                          <span className="ms-3 d-inline-block">
+                            {navi.title}
+                          </span>
+                        </span>
+                      </div>
+                    </Link>
+                  ) : null
+                ) : (
+                  <Link
+                    to={navi.href}
+                    className={
+                      location.pathname === navi.href
+                        ? "active nav-link py-2"
+                        : "nav-link py-2"
+                    }
+                    onClick={() => toggleStockSubMenu(navi)}
+                  >
+                    <div className="icon-container">
+                      <span>
+                        <i>{navi.icon}</i>
+                        <span className="ms-3 d-inline-block">
+                          {navi.title}
+                        </span>
+                      </span>
+                      {navi.title === "Stocks" && (
+                        <i
+                          className={`rotate-icon ${
+                            showStockSubMenu ? "open" : ""
+                          }`}
+                        >
+                          {showStockSubMenu ? (
+                            <FaChevronUp />
+                          ) : (
+                            <FaChevronDown />
+                          )}
+                        </i>
+                      )}
+                    </div>
+                  </Link>
+                )}
+
                 {navi.title === "Stocks" && (
                   <TransitionGroup>
                     {showStockSubMenu && (

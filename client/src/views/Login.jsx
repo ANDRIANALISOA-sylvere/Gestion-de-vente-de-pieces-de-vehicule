@@ -1,5 +1,5 @@
 // Importations des dépendances
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TbBrandAlgolia } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
@@ -7,6 +7,8 @@ import axios from "axios";
 
 // Importation de l'image de fond
 import Fond from "../assets/images/bg/bg.avif";
+import { useEffect } from "react";
+import { UserContext } from "../context/checkauth";
 
 const Login = () => {
   // État local pour stocker l'email, le mot de passe et les erreurs
@@ -14,6 +16,8 @@ const Login = () => {
   const [mdp, setMdp] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  // const { setUser } = useContext(UserContext);
+
 
   // Hook pour la navigation
   const navigate = useNavigate();
@@ -47,7 +51,7 @@ const Login = () => {
         );
         const data = await response.data;
         localStorage.setItem("token", data.token);
-        console.log(data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/vente");
         setEmailError("");
         setPasswordError("");
@@ -70,6 +74,12 @@ const Login = () => {
       }
     }
   };
+
+  // useEffect(()=>{
+  //   return (()=>{
+  //     setUser({});
+  //   })
+  // },[])
 
   return (
     <section className="bg-white d-flex align-items-stretch">

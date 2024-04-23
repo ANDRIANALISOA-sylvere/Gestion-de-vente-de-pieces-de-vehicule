@@ -1,6 +1,8 @@
-import { lazy } from "react";
+import { lazy, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout.js";
+import { UserContext } from "../context/checkauth.js";
+import { RoleGuard } from "../components/RoleGuard/RoleGuard.js";
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
@@ -18,7 +20,7 @@ const Stock = lazy(() => import("../views/ui/Stock.js"));
 const Commande = lazy(() => import("../views/ui/Commande.js"));
 const Employe = lazy(() => import("../views/ui/Employe.js"));
 const Login = lazy(() => import("../views/Login.jsx"));
-
+const NotFound = lazy(() => import("../views/ui/NotFound.js"));
 
 /*****Routes******/
 const PrivateRoute = ({ children }) => {
@@ -62,8 +64,20 @@ const ThemeRoutes = [
       { path: "/vente/pieces", exact: true, element: <Piece /> },
       { path: "/vente/stocks", exact: true, element: <Stock /> },
       { path: "/vente/commandes", exact: true, element: <Commande /> },
-      { path: "/vente/employes", exact: true, element: <Employe /> },
+      {
+        path: "/vente/employes",
+        exact: true,
+        element: (
+          <RoleGuard requiredRole="Administrateur">
+            <Employe />
+          </RoleGuard>
+        ),
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 

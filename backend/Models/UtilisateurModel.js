@@ -81,7 +81,8 @@ class UtilisateurModel {
                 { sub: result[0].matricule, exp },
                 process.env.SECRET
               );
-              callback(null, {token ,exp});
+              const user = result[0];
+              callback(null, {token, user});
             }
           });
         }
