@@ -93,7 +93,7 @@ const Header = () => {
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">
-          {localUser.email}
+          {localUser.nom} {localUser.prenom}
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Info</DropdownItem>
