@@ -184,3 +184,23 @@ input:-webkit-autofill:active {
   -webkit-autofill-background-color: transparent !important; /* Pour les navigateurs basés sur Chromium */
 }
 
+
+/* Enlever l'outline de Bootstrap */
+.accordion .accordion-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Styliser le header de l'accordion */
+.accordion .accordion-header {
+  background-color: #f0f0f0 !important; /* Couleur de fond par défaut */
+}
+
+/* Couleurs de fond différentes pour chaque header */
+.accordion .accordion-header:nth-child(1) {
+  background-color: red; /* Couleur de fond pour le premier header */
+}
+
+.accordion .accordion-header:nth-child(2) {
+  background-color: green; /* Couleur de fond pour le deuxième header */
+}

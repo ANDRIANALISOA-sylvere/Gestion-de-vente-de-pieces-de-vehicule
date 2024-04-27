@@ -22,11 +22,9 @@ import { useToast } from "../../hooks/Toast/useToast";
 import { ToastContainer } from "react-toastify";
 import { useFecth } from "../../hooks/Fetch/useFetch";
 import { useSweetAlert } from "../../hooks/SweetAlert/useSweetAlert";
-import { UserContext } from "../../context/checkauth";
 
 const Client = () => {
   // Utilisation des hooks et variable
-  const { user, setUser, token, setToken } = useContext(UserContext);
   const { notify, alertError } = useToast();
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);

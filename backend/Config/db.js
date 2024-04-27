@@ -1,19 +1,17 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'gestion_vente'
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "gestion_vente",
 });
 
-function query(sql, params, callback) {
-  connection.query(sql, params, (err, results) => {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, results);
-    }
-  });
-}
+connection.connect((err) => {
+  if (err) {
+    console.error("Erreur de connexion à la base de données:", err);
+    return;
+  }
+  console.log("Connecté à la base de données MySQL");
+});
 
-module.exports = { query };
+module.exports = connection;

@@ -52,6 +52,10 @@ $font-weight-bold: 500 !default;
 /********************/
 $body-bg: #f9fbfc !default;
 $body-color: $gray-900 !default;
+$accordion-bg: #8b5cf6 !default;
+$accordion-button-color : white !default;
+$accordion-button-active-color : white !default;
+$accordion-button-active-bg : $success !default;
 $gradient: linear-gradient(-90deg, rgba($white, 0.5), rgba($white, 0)) !default;
 
 /*******************/

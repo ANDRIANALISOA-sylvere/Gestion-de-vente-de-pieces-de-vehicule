@@ -13,6 +13,7 @@ const PieceRoute = require('./Routes/PiecesRoute')
 const EntreeRoute = require('./Routes/EntreeStockRoute')
 const SortieRoute = require('./Routes/SortieRoute')
 const CommandeRoute = require('./Routes/CommandesRoute')
+const TableCommandesRoute = require("./Routes/TableCommandesRoute");
 const UtilisateurRoute = require("./Routes/UtilisateurRoute");
 const AuthMiddleware = require("./middleware/utilisateurMiddleware");
 const checkAuth = require("./Controllers/checkAuth");
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(CategorieRoute);
+app.use(TableCommandesRoute);
 app.use(MarqueRoute);
 app.use(UtilisateurRoute);
 app.use(ClientRoute);

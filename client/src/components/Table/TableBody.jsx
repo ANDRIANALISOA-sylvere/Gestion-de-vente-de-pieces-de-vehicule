@@ -29,7 +29,6 @@ const TableBody = ({
     return value;
   };
 
-  console.log(status);
 
   return (
     <tbody>
