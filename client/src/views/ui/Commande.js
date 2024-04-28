@@ -38,7 +38,7 @@ const Commandes = () => {
   const [delayLoading, setDelayLoading] = useState(true);
   const [produitsSel, setProduitsSel] = useState([]);
   const [idClient, setIdClient] = useState("");
-  const [idcommandedetails, setIdCommandeDetails] = useState(null);
+  const [idcommandedetails, setIdCommandeDetails] = useState("");
   const [idcommande, setIdCommande] = useState("");
   const [dateCommande, setDateCommande] = useState("");
   const itemsPerPage = 9;
@@ -263,6 +263,7 @@ const Commandes = () => {
                         type="number"
                         value={produit.quantite}
                         className="form-control form-control-sm"
+                        min="1"
                         onChange={(e) =>
                           handleQuantiteChange(
                             produit.id_produit,

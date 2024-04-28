@@ -37,17 +37,18 @@ const styles = StyleSheet.create({
   tableCell: {
     textAlign: "center",
     padding: 5,
-    borderWidth: 1,
+    borderWidth: "0.3px",
     borderColor: "#000000",
     borderRightWidth: 0,
   },
   specifique: {
-    borderRightWidth: 1,
+    borderRightWidth: "0.3px",
   },
   totalContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    marginTop: 10,
+    marginTop: 20,
+    paddingRight: "80px",
   },
   smallText: {
     fontSize: 8,
@@ -60,6 +61,10 @@ const styles = StyleSheet.create({
 const MyDoc = ({ selectedRow }) => {
   const [detailsclient, setDetailsClient] = useState({});
   const [detailsdata, setDetailsData] = useState([]);
+  const [localUser, setLocalUser] = useState("");
+  const [total, setTotal] = useState(0);
+  const [tvaTotale, setTvaTotale] = useState(0);
+  const [soldePayer, setSoldePayer] = useState(0);
 
   const getListclient = async () => {
     try {
@@ -85,10 +90,13 @@ const MyDoc = ({ selectedRow }) => {
 
   const { donne: pieces } = useFecth("http://localhost:5000/piece");
 
-  const getprix_unitaire = (id) => {
+  const getprix_unitaire = (id, quantite) => {
     const piece = pieces.find((item) => item.ID_Piece === id);
     if (piece) {
-      return piece.Prix_unitaire_ht;
+      const prix_unitaire = piece.Prix_unitaire_ht;
+      const montant_total = prix_unitaire * quantite;
+      const tva = piece.Prix_unitaire_ht * (piece.TVA / 100);
+      return { prix_unitaire, montant_total, tva };
     }
   };
 
@@ -97,9 +105,29 @@ const MyDoc = ({ selectedRow }) => {
     getdetailsdata();
   }, [selectedRow]);
 
-  console.log(detailsdata);
-  console.log(detailsclient);
-  console.log(selectedRow);
+  useEffect(() => {
+    const utilisateur = localStorage.getItem("user");
+    setLocalUser(JSON.parse(utilisateur));
+  }, []);
+
+  useEffect(() => {
+    let totalGeneral = 0;
+    let tvaTotaleCalculee = 0;
+    detailsdata.forEach((item) => {
+      const { montant_total, tva } = getprix_unitaire(
+        item.id_produit,
+        item.quantite
+      );
+      totalGeneral += montant_total;
+      tvaTotaleCalculee += tva;
+    });
+    setTotal(totalGeneral);
+    setTvaTotale(tvaTotaleCalculee);
+
+    const soldeAPayer = totalGeneral + tvaTotaleCalculee;
+    setSoldePayer(soldeAPayer);
+  }, [detailsdata]);
+
   return (
     <Document>
       <Page size="A4" style={styles.container}>
@@ -110,13 +138,13 @@ const MyDoc = ({ selectedRow }) => {
             </Text>
             <View style={styles.line}>
               <Text style={[styles.smallText, { opacity: "0.5" }]}>
-                123 Adresse, Ville, État, Code postal/Poste
+                Tanambao, Fianarantsoa, Madagascar, 301
               </Text>
               <Text style={[styles.smallText, { opacity: "0.5" }]}>
-                Site web : https://www.josephinsylvere.mg
+                Site web : https://www.carpartscentral.mg
               </Text>
               <Text style={[styles.smallText, { opacity: "0.5" }]}>
-                Mail : josephinsylvere@gmail.com
+                Mail : carpartscentral@gmail.com
               </Text>
               <Text style={[styles.smallText, { opacity: "0.5" }]}>
                 Tél : 0343947844
@@ -131,14 +159,12 @@ const MyDoc = ({ selectedRow }) => {
           ]}
         >
           <View>
-            <Text style={styles.smallText}>FACTURER</Text>
+            <Text style={styles.smallText}>CAISSIER</Text>
             <View style={{ marginTop: "5px" }}>
               <Text style={styles.smallText}>
-                ANDRIANALISOA Joséphin Sylvère
+                {localUser.nom} {localUser.prenom}
               </Text>
-              <Text style={styles.smallText}>
-                0343947844, josephinsylvere@gmail.com
-              </Text>
+              <Text style={styles.smallText}>{localUser.email}</Text>
             </View>
           </View>
           <View>
@@ -166,18 +192,18 @@ const MyDoc = ({ selectedRow }) => {
           ]}
         >
           <View>
-            <View style={[styles.tableCell, { width: "180px" }]}>
-              <Text style={[styles.smallText]}>PRODUIT</Text>
+            <View style={[styles.tableCell, { width: "174px" }]}>
+              <Text style={[styles.smallText]}>PRODUITS</Text>
             </View>
           </View>
           <View>
-            <View style={[styles.tableCell, { width: "180px" }]}>
-              <Text style={[styles.smallText]}>QTÉ</Text>
+            <View style={[styles.tableCell, { width: "174px" }]}>
+              <Text style={[styles.smallText]}>QUANTITE</Text>
             </View>
           </View>
           <View>
             <View
-              style={[styles.tableCell, styles.specifique, { width: "180px" }]}
+              style={[styles.tableCell, styles.specifique, { width: "174px" }]}
             >
               <Text style={[styles.smallText]}>PRIX UNITAIRE</Text>
             </View>
@@ -195,7 +221,7 @@ const MyDoc = ({ selectedRow }) => {
               <View
                 style={[
                   styles.tableCell,
-                  { width: "180px", borderTopWidth: "0px" },
+                  { width: "174px", borderTopWidth: "0px" },
                 ]}
               >
                 <Text style={[styles.smallText]}>{item.id_produit}</Text>
@@ -205,7 +231,7 @@ const MyDoc = ({ selectedRow }) => {
               <View
                 style={[
                   styles.tableCell,
-                  { width: "180px", borderTopWidth: "0px" },
+                  { width: "174px", borderTopWidth: "0px" },
                 ]}
               >
                 <Text style={[styles.smallText]}>{item.quantite}</Text>
@@ -216,38 +242,46 @@ const MyDoc = ({ selectedRow }) => {
                 style={[
                   styles.tableCell,
                   styles.specifique,
-                  { width: "180px", borderTopWidth: "0px" },
+                  { width: "174px", borderTopWidth: "0px" },
                 ]}
               >
                 <Text style={[styles.smallText]}>
-                  {getprix_unitaire(item.id_produit)}
+                  {
+                    getprix_unitaire(item.id_produit, item.quantite)
+                      .prix_unitaire
+                  }{" "}
+                  Ar
                 </Text>
               </View>
             </View>
           </View>
         ))}
-        <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>TOTAL 0,00</Text>
+        <View style={[styles.totalContainer]}>
+          <Text style={styles.smallText}>TOTAL : {total} Ar</Text>
         </View>
         <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>RABAIS 0,00</Text>
+          <Text style={styles.smallText}>TOTAL TVA : {tvaTotale} Ar</Text>
         </View>
         <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>SOUS-TOTAL MOINS LA REMISE 0,00</Text>
+          <Text
+            style={[styles.smallText, { fontSize: "10px", fontWeight: "bold" }]}
+          >
+            SOLDE A PAYE : {soldePayer} Ar
+          </Text>
         </View>
-        <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>TAUX D'IMPOSITION 0,00 %</Text>
-        </View>
-        <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>TAXE TOTAL 0,00</Text>
-        </View>
-        <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>EXPÉDITION/MANUTENTION 0,00</Text>
-        </View>
-        <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>Solde payé $ -</Text>
-        </View>
-        <Text style={styles.smallText}>Merci pour votre entreprise!</Text>
+        <Text
+          style={[
+            styles.smallText,
+            {
+              textAlign: "center",
+              marginTop: "30px",
+              borderTopWidth: "0.1px",
+              paddingTop: "10px",
+            },
+          ]}
+        >
+          CarParts Central vous remercie de votre confiance !!!
+        </Text>
       </Page>
     </Document>
   );

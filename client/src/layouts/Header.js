@@ -1,6 +1,6 @@
 import { BiLogOut } from "react-icons/bi";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -93,15 +93,14 @@ const Header = () => {
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">
           <DropdownToggle color="transparent" className="shadow-none">
-          {localUser.nom} {localUser.prenom}
+            {localUser.nom} {localUser.prenom}
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Info</DropdownItem>
-            <DropdownItem>My Account</DropdownItem>
-            <DropdownItem>Edit Profile</DropdownItem>
+            <Link to="/vente/profile" style={{textDecoration:'none'}}>
+              <DropdownItem>Profile</DropdownItem>
+            </Link>
             <DropdownItem divider />
-            <DropdownItem>My Balance</DropdownItem>
-            <DropdownItem>Inbox</DropdownItem>
             <DropdownItem
               onClick={handleLogout}
               className="text-danger hover_logout"
