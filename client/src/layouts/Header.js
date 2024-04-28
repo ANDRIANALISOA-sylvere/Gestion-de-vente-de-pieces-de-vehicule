@@ -1,6 +1,8 @@
 import { BiLogOut } from "react-icons/bi";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate , useLocation } from "react-router-dom";
+import { navigation } from "../components/Navigation";
+
 import {
   Navbar,
   Collapse,
@@ -13,15 +15,23 @@ import {
   Button,
 } from "reactstrap";
 import { ReactComponent as LogoWhite } from "../assets/images/logos/adminprowhite.svg";
-import user1 from "../assets/images/users/user-1.jpg";
-import { UserContext } from "../context/checkauth";
+
 
 // Composant Header
 const Header = () => {
-  const { user } = useContext(UserContext);
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const [localUser, setLocalUser] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
+  const location = useLocation();
+
+
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const currentNavItem = navigation.find((item) => item.href === currentPath);
+    setCurrentTitle(currentNavItem ? currentNavItem.title : '');
+  }, [location]);
 
   useEffect(() => {
     const utilisateur = localStorage.getItem("user");
@@ -87,8 +97,7 @@ const Header = () => {
           <span
             style={{ color: "#78909C", fontWeight: "400", fontSize: "20px" }}
           >
-            {" "}
-            Tableau de bord{" "}
+            {currentTitle}
           </span>
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle} className="shadow-none">

@@ -55,23 +55,23 @@
 }
 
 .sidebar-content {
-  max-height: calc(100vh - 150px); /* Ajustez cette valeur selon vos besoins */
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 }
 
 .sidebar-content::-webkit-scrollbar {
-  width: 8px; /* Largeur de la barre de défilement */
+  width: 8px;
 }
 
 .sidebar-content::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Couleur de fond de la piste de défilement */
+  background-color: #f1f1f1;
 }
 
 .sidebar-content::-webkit-scrollbar-thumb {
-  background-color: #b199eb; /* Couleur du pouce de défilement */
-  border-radius: 4px; /* Arrondi des coins du pouce de défilement */
+  background-color: #b199eb;
+  border-radius: 4px;
 }
 
 .sidebar-content::-webkit-scrollbar-thumb:hover {
-  background-color: #8b5cf6; /* Couleur du pouce de défilement au survol */
+  background-color: #8b5cf6;
 }
