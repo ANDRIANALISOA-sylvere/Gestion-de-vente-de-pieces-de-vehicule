@@ -16,7 +16,7 @@ const TableCommande = ({
   const columns = ["ID_Commande", "ID_Client", "DateCommande"];
 
   // Tableau des noms de colonnes à afficher
-  const col = ["Identifiant", "Client", "Date du commande"];
+  const col = ["N° de commande", "Client", "Date du commande"];
 
   return (
     <div className="mb-2">

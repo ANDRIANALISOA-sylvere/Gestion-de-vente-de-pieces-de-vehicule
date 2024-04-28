@@ -15,7 +15,8 @@ const getQuantiteDisponible = (ID_Piece) => {
 
 const reduction = (ID_Piece, quantite) => {
   return new Promise((resolve, reject) => {
-    const query = "update pieces set Stock_disponible=Stock_disponible-? WHERE ID_Piece = ?";
+    const query =
+      "update pieces set Stock_disponible=Stock_disponible-? WHERE ID_Piece = ?";
     db.query(query, [quantite, ID_Piece], (err, results) => {
       if (err) {
         reject(err);
@@ -37,7 +38,7 @@ class TableCommandesController {
         if (quantite > quantiteDisponible) {
           return res.json({
             message: `Quantité insuffisante`,
-            status : "manquante"
+            status: "manquante",
           });
         }
       }
@@ -56,30 +57,38 @@ class TableCommandesController {
         return db.query(queryDetails, valuesDetails);
       });
 
-      
       for (const { id_produit, quantite } of produits) {
         await reduction(id_produit, quantite);
       }
-      
+
       await Promise.all(detailsQueries);
 
-      res.json({ message: "Commande enregistrée avec succès", status : 'ok' });
+      res.json({ message: "Commande enregistrée avec succès", status: "ok" });
     } catch (err) {
       res.json({ message: err.message });
     }
   }
 
-  static getTableCommandes(req,res)
-  {
+  static getTableCommandes(req, res) {
     const sql = "SELECT * FROM commandes";
-    db.query(sql,function(err,result){
-      if(err) {
-        res.json({message : err.message})
-      }else
-      {
-        res.json(result)
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
       }
-    })
+    });
+  }
+
+  static getSingleTableCommande(req, res) {
+    const sql = "SELECT * FROM commande_details where id_commande=?";
+    db.query(sql, req.params.id, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
   }
 }
 
