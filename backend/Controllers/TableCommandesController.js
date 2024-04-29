@@ -90,6 +90,18 @@ class TableCommandesController {
       }
     });
   }
+
+  static getHistorique(req, res) {
+    const sql =
+      "SELECT c.ID_Commande , c.DateCommande , cl.Nom, cl.adresse , cl.Tel , cl.email FROM commandes c JOIN clients  cl ON c.ID_Client = cl.ID_Client where cl.ID_Client = ? ORDER BY c.DateCommande DESC";
+    db.query(sql, req.params.idcli, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
 }
 
 module.exports = TableCommandesController;

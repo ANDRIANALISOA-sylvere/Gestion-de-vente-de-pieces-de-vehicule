@@ -4,6 +4,7 @@ const TableCommandesController = require("../Controllers/TableCommandesControlle
 const router = express.Router();
 
 router.get("/tablecommande", TableCommandesController.getTableCommandes);
+router.get("/tablecommande/commande/:idcli",TableCommandesController.getHistorique);
 router.get(
   "/tablecommande/:id",
   TableCommandesController.getSingleTableCommande

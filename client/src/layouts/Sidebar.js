@@ -13,6 +13,7 @@ const Sidebar = () => {
   const { user } = useContext(UserContext);
   const [showStockSubMenu, setShowStockSubMenu] = useState(false);
   const [localUser, setLocalUser] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const utilisateur = localStorage.getItem("user");
@@ -29,9 +30,12 @@ const Sidebar = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
   let location = useLocation();
+  const filteredNavigation = navigation.filter((nav) =>
+    nav.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
-    <div style={{position:'fixed'}}>
+    <div style={{ position: "fixed" }}>
       <div style={{ background: "white" }}>
         <div className="d-flex">
           <Button
@@ -61,7 +65,9 @@ const Sidebar = () => {
             <Input
               type="search"
               className="form-control custom-radius bg-white"
-              placeholder="Chercher ici ..."
+              placeholder="Filtrer menu ..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
             ></Input>
             <i className="form-control-icon">
               <BiSearchAlt />
@@ -69,7 +75,7 @@ const Sidebar = () => {
           </div>
           <div className="sidebar-content">
             <Nav vertical className="sidebarNav mt-2">
-              {navigation.map((navi, index) => (
+              {filteredNavigation.map((navi, index) => (
                 <NavItem key={index} className="sidenav-bg mt-2">
                   {navi.title === "Employes" ? (
                     localUser.role === "Administrateur" ? (

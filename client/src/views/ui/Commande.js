@@ -180,7 +180,7 @@ const Commandes = () => {
     <div>
       <ToastContainer autoClose={3000} />
       {(delayLoading || spinner) && <Loader />}
-      <UncontrolledAccordion defaultOpen="2" flush className="mb-5">
+      <UncontrolledAccordion defaultOpen="1" flush className="mb-5">
         <AccordionItem>
           <AccordionHeader targetId="1">
             <BiCartAdd /> <span className="ms-2">Nouvelle commande</span>

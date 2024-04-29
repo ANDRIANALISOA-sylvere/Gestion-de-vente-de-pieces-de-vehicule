@@ -203,6 +203,7 @@ const Client = () => {
       <ToastContainer autoClose={3000} />
       {(delayLoading || loading) && <Loader />}
       <p className="text-center">{error && <div>{error.message}</div>}</p>
+      {/* <input type="text" className="form-control" value={clientId} onChange={(e)=> setClientId(e.target.value)} /> */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <DropdownActions
           selectedRow={selectedRow}

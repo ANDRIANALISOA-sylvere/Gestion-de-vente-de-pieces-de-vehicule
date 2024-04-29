@@ -95,8 +95,17 @@ const MyDoc = ({ selectedRow }) => {
     if (piece) {
       const prix_unitaire = piece.Prix_unitaire_ht;
       const montant_total = prix_unitaire * quantite;
+      const taxe = piece.TVA;
       const tva = piece.Prix_unitaire_ht * (piece.TVA / 100);
-      return { prix_unitaire, montant_total, tva };
+      return { prix_unitaire, montant_total, tva, taxe };
+    }
+  };
+
+  const geNom = (id) => {
+    const piece = pieces.find((item) => item.ID_Piece === id);
+    if (piece) {
+      const Nom = piece.Nom;
+      return Nom;
     }
   };
 
@@ -192,20 +201,25 @@ const MyDoc = ({ selectedRow }) => {
           ]}
         >
           <View>
-            <View style={[styles.tableCell, { width: "174px" }]}>
+            <View style={[styles.tableCell, { width: "130px" }]}>
               <Text style={[styles.smallText]}>PRODUITS</Text>
             </View>
           </View>
           <View>
-            <View style={[styles.tableCell, { width: "174px" }]}>
+            <View style={[styles.tableCell, { width: "130px" }]}>
+              <Text style={[styles.smallText]}>TVA</Text>
+            </View>
+          </View>
+          <View>
+            <View style={[styles.tableCell, { width: "130px" }]}>
               <Text style={[styles.smallText]}>QUANTITE</Text>
             </View>
           </View>
           <View>
             <View
-              style={[styles.tableCell, styles.specifique, { width: "174px" }]}
+              style={[styles.tableCell, styles.specifique, { width: "130px" }]}
             >
-              <Text style={[styles.smallText]}>PRIX UNITAIRE</Text>
+              <Text style={[styles.smallText]}>PRIX UNITAIRE HT</Text>
             </View>
           </View>
         </View>
@@ -221,17 +235,29 @@ const MyDoc = ({ selectedRow }) => {
               <View
                 style={[
                   styles.tableCell,
-                  { width: "174px", borderTopWidth: "0px" },
+                  { width: "130px", borderTopWidth: "0px" },
                 ]}
               >
-                <Text style={[styles.smallText]}>{item.id_produit}</Text>
+                <Text style={[styles.smallText]}>{geNom(item.id_produit)}</Text>
               </View>
             </View>
             <View>
               <View
                 style={[
                   styles.tableCell,
-                  { width: "174px", borderTopWidth: "0px" },
+                  { width: "130px", borderTopWidth: "0px" },
+                ]}
+              >
+                <Text style={[styles.smallText]}>
+                  {getprix_unitaire(item.id_produit, item.quantite).taxe} %
+                </Text>
+              </View>
+            </View>
+            <View>
+              <View
+                style={[
+                  styles.tableCell,
+                  { width: "130px", borderTopWidth: "0px" },
                 ]}
               >
                 <Text style={[styles.smallText]}>{item.quantite}</Text>
@@ -242,7 +268,7 @@ const MyDoc = ({ selectedRow }) => {
                 style={[
                   styles.tableCell,
                   styles.specifique,
-                  { width: "174px", borderTopWidth: "0px" },
+                  { width: "130px", borderTopWidth: "0px" },
                 ]}
               >
                 <Text style={[styles.smallText]}>
@@ -257,16 +283,16 @@ const MyDoc = ({ selectedRow }) => {
           </View>
         ))}
         <View style={[styles.totalContainer]}>
-          <Text style={styles.smallText}>TOTAL : {total} Ar</Text>
+          <Text style={styles.smallText}>TOTAL HT : {total} Ar</Text>
         </View>
         <View style={styles.totalContainer}>
-          <Text style={styles.smallText}>TOTAL TVA : {tvaTotale} Ar</Text>
+          <Text style={styles.smallText}>TOTAL TTC : {soldePayer} Ar</Text>
         </View>
         <View style={styles.totalContainer}>
           <Text
             style={[styles.smallText, { fontSize: "10px", fontWeight: "bold" }]}
           >
-            SOLDE A PAYE : {soldePayer} Ar
+            MONTANT A PAYE : {soldePayer} Ar
           </Text>
         </View>
         <Text
