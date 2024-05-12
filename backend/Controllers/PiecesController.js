@@ -53,6 +53,19 @@ class PiecesController {
       }
     });
   }
+
+  static countpiece(req,res)
+  {
+    PiecesModel.countpiece((err,piece)=>{
+      if(err)
+      {
+        res.json({message : err.message})
+      }else
+      {
+        res.json(piece);
+      }
+    })
+  }
 }
 
 module.exports = PiecesController;

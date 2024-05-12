@@ -53,6 +53,30 @@ class ClientsController {
       }
     });
   }
+
+  static countclients(req,res)
+  {
+    ClientsModel.countclients((err,client)=>{
+      if(err)
+      {
+        res.json({message : err.message})
+      }else{
+        res.json(client);
+      }
+    })
+  }
+
+  static meilleurclient(req,res)
+  {
+    ClientsModel.meilleurclient((err,client)=>{
+      if(err)
+      {
+        res.json({message : err.message})
+      }else{
+        res.json(client);
+      }
+    })
+  }
 }
 
 module.exports = ClientsController;

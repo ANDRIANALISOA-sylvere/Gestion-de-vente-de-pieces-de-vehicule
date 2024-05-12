@@ -7,6 +7,10 @@ body {
 .pageWrapper {
   min-height: 100vh;
 }
+.word-break
+{
+  word-break: break-word;
+}
 
 .contentArea {
   flex-grow: 1;

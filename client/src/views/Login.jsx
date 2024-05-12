@@ -6,7 +6,7 @@ import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
 import axios from "axios";
 
 // Importation de l'image de fond
-import Fond from "../assets/images/bg/bg.avif";
+import Fond from "../assets/images/bg/roberto-nickson-Yp9FdEqaCdk-unsplash.jpg";
 import Loader from "../layouts/loader/Loader";
 
 const Login = () => {

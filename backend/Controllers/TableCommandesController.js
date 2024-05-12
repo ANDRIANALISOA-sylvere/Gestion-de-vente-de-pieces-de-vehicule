@@ -102,6 +102,76 @@ class TableCommandesController {
       }
     });
   }
+
+  static countcommandes(req, res) {
+    const sql = "SELECT count(ID_Commande) as commandes from commandes";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
+
+  static sommequantite(req, res) {
+    const sql = "SELECT SUM(quantite) as sommequantite from commande_details";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
+
+  static recette(req, res) {
+    const sql =
+      "SELECT SUM(p.Prix_unitaire_ht * (1 + p.TVA) * cd.quantite) as recettes FROM commandes c JOIN commande_details cd ON c.ID_Commande = cd.id_commande JOIN pieces p ON cd.id_produit = p.ID_Piece WHERE MONTH(c.DateCommande)=MONTH(CURRENT_DATE()) AND YEAR (c.DateCommande)=YEAR(CURRENT_DATE())";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
+
+  static mostpieces(req, res) {
+    const sql =
+      "SELECT f.Nom FROM fournisseurs f INNER JOIN pieces p ON p.ID_Fournisseur=f.ID_Fournisseur INNER JOIN commande_details cd ON cd.id_produit=p.ID_Piece GROUP BY f.ID_Fournisseur ORDER BY f.Nom ASC LIMIT 7";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
+
+  static sumquantitefournisseur(req, res) {
+    const sql =
+      "SELECT f.Nom, SUM(cd.quantite) AS total_vendu FROM fournisseurs f INNER JOIN pieces p ON p.ID_Fournisseur=f.ID_Fournisseur INNER JOIN commande_details cd ON cd.id_produit=p.ID_Piece GROUP BY f.ID_Fournisseur ORDER BY f.Nom ASC  LIMIT 7";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
+
+  static countclientfournisseur(req, res) {
+    const sql =
+      "SELECT f.Nom, COUNT(DISTINCT c.ID_Client) AS nb_clients FROM fournisseurs f INNER JOIN pieces p ON p.ID_Fournisseur=f.ID_Fournisseur INNER JOIN commande_details cd ON cd.id_produit=p.ID_Piece INNER JOIN commandes c ON c.ID_Commande=cd.id_commande WHERE f.Nom IN(SELECT f.Nom FROM fournisseurs f INNER JOIN pieces p ON p.ID_Fournisseur=f.ID_Fournisseur INNER JOIN commande_details cd ON cd.id_produit=p.ID_Piece GROUP BY f.ID_Fournisseur ORDER BY SUM(cd.quantite) DESC) GROUP BY f.ID_Fournisseur ORDER BY f.Nom ASC";
+    db.query(sql, function (err, result) {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.json(result);
+      }
+    });
+  }
 }
 
 module.exports = TableCommandesController;

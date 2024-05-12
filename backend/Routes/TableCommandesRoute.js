@@ -4,7 +4,22 @@ const TableCommandesController = require("../Controllers/TableCommandesControlle
 const router = express.Router();
 
 router.get("/tablecommande", TableCommandesController.getTableCommandes);
-router.get("/tablecommande/commande/:idcli",TableCommandesController.getHistorique);
+router.get("/countcommande", TableCommandesController.countcommandes);
+router.get("/sommequantite", TableCommandesController.sommequantite);
+router.get("/recettes", TableCommandesController.recette);
+router.get("/mostpieces", TableCommandesController.mostpieces);
+router.get(
+  "/sumquantitefournisseur",
+  TableCommandesController.sumquantitefournisseur
+);
+router.get(
+  "/countclientfournisseur",
+  TableCommandesController.countclientfournisseur
+);
+router.get(
+  "/tablecommande/commande/:idcli",
+  TableCommandesController.getHistorique
+);
 router.get(
   "/tablecommande/:id",
   TableCommandesController.getSingleTableCommande

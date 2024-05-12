@@ -212,40 +212,40 @@ export const navigation = [
       </svg>
     ),
   },
-  {
-    title: "Stocks",
-    href: "/vente/stocks",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 14 14"
-        height="14"
-        width="14"
-        id="Database-Server-1--Streamline-Core"
-      >
-        <desc>Database Server 1 Streamline Icon: https://streamlinehq.com</desc>
-        <g id="database-server-1--server-network-internet">
-          <path
-            id="Union"
-            fill="#78909c80"
-            fillRule="evenodd"
-            d="M1.5 0.407a1.5 1.5 0 0 0 -1.5 1.5l0 2.925a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5 -1.5l0 -2.925a1.5 1.5 0 0 0 -1.5 -1.5h-11ZM0 9.168a1.5 1.5 0 0 1 1.5 -1.5h11a1.5 1.5 0 0 1 1.5 1.5l0 2.925a1.5 1.5 0 0 1 -1.5 1.5h-11a1.5 1.5 0 0 1 -1.5 -1.5l0 -2.925Z"
-            clipRule="evenodd"
-            strokeWidth={1}
-          />
-          <path
-            id="Union_2"
-            fill="#78909c"
-            fillRule="evenodd"
-            d="M3.171 2.245a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0 -2.25ZM2.046 10.63a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1 -2.25 0Zm4.829 -7.26c0 -0.346 0.28 -0.625 0.625 -0.625H11a0.625 0.625 0 1 1 0 1.25H7.5a0.625 0.625 0 0 1 -0.625 -0.625Zm0.625 6.635a0.625 0.625 0 0 0 0 1.25H11a0.625 0.625 0 1 0 0 -1.25H7.5Z"
-            clipRule="evenodd"
-            strokeWidth={1}
-          />
-        </g>
-      </svg>
-    ),
-  },
+  // {
+  //   title: "Stocks",
+  //   href: "/vente/stocks",
+  //   icon: (
+  //     <svg
+  //       xmlns="http://www.w3.org/2000/svg"
+  //       fill="none"
+  //       viewBox="0 0 14 14"
+  //       height="14"
+  //       width="14"
+  //       id="Database-Server-1--Streamline-Core"
+  //     >
+  //       <desc>Database Server 1 Streamline Icon: https://streamlinehq.com</desc>
+  //       <g id="database-server-1--server-network-internet">
+  //         <path
+  //           id="Union"
+  //           fill="#78909c80"
+  //           fillRule="evenodd"
+  //           d="M1.5 0.407a1.5 1.5 0 0 0 -1.5 1.5l0 2.925a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5 -1.5l0 -2.925a1.5 1.5 0 0 0 -1.5 -1.5h-11ZM0 9.168a1.5 1.5 0 0 1 1.5 -1.5h11a1.5 1.5 0 0 1 1.5 1.5l0 2.925a1.5 1.5 0 0 1 -1.5 1.5h-11a1.5 1.5 0 0 1 -1.5 -1.5l0 -2.925Z"
+  //           clipRule="evenodd"
+  //           strokeWidth={1}
+  //         />
+  //         <path
+  //           id="Union_2"
+  //           fill="#78909c"
+  //           fillRule="evenodd"
+  //           d="M3.171 2.245a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0 -2.25ZM2.046 10.63a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1 -2.25 0Zm4.829 -7.26c0 -0.346 0.28 -0.625 0.625 -0.625H11a0.625 0.625 0 1 1 0 1.25H7.5a0.625 0.625 0 0 1 -0.625 -0.625Zm0.625 6.635a0.625 0.625 0 0 0 0 1.25H11a0.625 0.625 0 1 0 0 -1.25H7.5Z"
+  //           clipRule="evenodd"
+  //           strokeWidth={1}
+  //         />
+  //       </g>
+  //     </svg>
+  //   ),
+  // },
   {
     title: "Commandes",
     href: "/vente/commandes",
