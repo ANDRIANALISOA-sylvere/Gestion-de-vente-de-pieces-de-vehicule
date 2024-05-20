@@ -7,6 +7,7 @@ router.get("/utilisateur", UtilisateurController.getAllUtilisateur);
 router.get("/utilisateur/:matricule", UtilisateurController.getUtilisateurById);
 router.post("/utilisateur", UtilisateurController.createUtilisateur);
 router.post("/loginutilisateur", UtilisateurController.loginUtilisateur);
+router.post("/verify-otp", UtilisateurController.verifyOtp);
 router.get("/logoututilisateur", UtilisateurController.logoututilisateur);
 router.delete(
   "/utilisateur/:matricule",

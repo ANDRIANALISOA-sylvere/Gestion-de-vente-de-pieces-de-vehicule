@@ -1,4 +1,15 @@
 const UtilisateurModel = require("../Models/UtilisateurModel");
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 class UtilisateurController {
   static getAllUtilisateur(req, res) {
@@ -53,16 +64,46 @@ class UtilisateurController {
       } else if (!utilisateur) {
         res.status(401).json({ message });
       } else {
-        res.json({token : utilisateur.token , user : utilisateur.user});
+        UtilisateurModel.generateOTP(req.body.email, (err, otp) => {
+          if (err) {
+            res.json({ message: err.message });
+          } else {
+            const mailOptions = {
+              from: process.env.EMAIL_USER,
+              to: req.body.email,
+              subject: "Votre Code OTP",
+              text: `Votre code OTP est :  ${otp}`,
+            };
+            console.log(transporter,mailOptions);
+            transporter.sendMail(mailOptions, (error, info) => {
+              if (error) {
+                return res.status(500).send("Error sending email " + error.message);
+              }
+              res.json({ token: utilisateur.token, user: utilisateur.user });
+            });
+          }
+        });
       }
     });
   }
 
-  static logoututilisateur(req,res){
-    res.clearCookie('auth')
-    res.json(200)
+  static verifyOtp(req, res) {
+    const { email, otp } = req.body;
+    UtilisateurModel.verifyOTP(email, otp, (err, isValid) => {
+      if (err) {
+        res.json({ message: err.message });
+      } else if (!isValid) {
+        res.status(401).json({ message: "Invalid OTP" });
+      } else {
+        res.json({ message: "OTP verified successfully" });
+      }
+    });
   }
 
+  static logoututilisateur(req, res) {
+    res.clearCookie("auth");
+    res.json(200);
+  }
 }
 
 module.exports = UtilisateurController;
