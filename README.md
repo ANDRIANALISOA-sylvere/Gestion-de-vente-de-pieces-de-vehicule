@@ -16,10 +16,14 @@ Lien de téléchargement de nodejs : https://nodejs.org/en/
 
 ### `cd backend`
 
+### `npm insttall`
+
 ### `npm start`
 
 ## Lancer serveur frontend :
 
 ### `cd frontend`
+
+### `npm insttall`
 
 ### `npm start`
