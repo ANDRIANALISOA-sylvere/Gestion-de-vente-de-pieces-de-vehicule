@@ -54,11 +54,11 @@ const Acceuil = () => {
               })}
             </div>
           </div>
-          <div className="card">
+          {/* <div className="card">
             <div className="card-body">
               <DoughnutChart></DoughnutChart>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
