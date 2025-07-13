@@ -16,7 +16,7 @@ Lien de téléchargement de nodejs : https://nodejs.org/en/
 
 ### `cd backend`
 
-### `npm insttall`
+### `npm install`
 
 ### `npm start`
 
